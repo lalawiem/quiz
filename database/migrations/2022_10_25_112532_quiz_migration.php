@@ -1,3 +1,5 @@
+
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -19,8 +21,6 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->timestamp('finished_at')->nullable();
             $table->enum('status',['publish', 'draft','passive'])->default;
-            $table->timestamp('finished_at')->nullable();
-
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quizzes');
+        Schema::drop('quizzes');
     }
 };
