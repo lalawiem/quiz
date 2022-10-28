@@ -8,9 +8,9 @@
     <div class="card">
         <div class="card-body">
               <h5 class="card-title">
-              <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Quiz Oluştur</a>
+              <a href="{{route('quizzes.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Quiz Oluştur</a>
               </h5>
-              <table class="table table-bordered table-dark">
+              <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Quiz</th>
@@ -31,12 +31,9 @@
         </td>
     </tr>
     @endforeach
-
   </tbody>
 </table>
+{{$quizzes->links()}}
               </div>
               </div>
-
-
-
 </x-app-layout>

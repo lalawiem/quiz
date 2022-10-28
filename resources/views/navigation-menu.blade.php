@@ -89,9 +89,25 @@
                                 </span>
                             @endif
                         </x-slot>
-
+                        <!-- Account Management -->
                         <x-slot name="content">
-                            <!-- Account Management -->
+                            @if (Auth()->user()->type=='admin')
+                             <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Admin İşlemleri') }}
+                            </div>
+
+                            <x-jet-dropdown-link href="{{ route('quizzes.index') }}">
+                                {{ __('Quizler') }}
+                            </x-jet-dropdown-link>
+
+
+                            @endif
+
+
+
+
+
+                            
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
                             </div>
@@ -159,6 +175,20 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
+
+
+
+
+
+
+
+
+
+
+
+                
+
+                
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
