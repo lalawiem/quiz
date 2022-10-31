@@ -36,6 +36,7 @@ class QuizController extends Controller
     public function create()
     {
         return view('admin.quiz.create');
+        
     }
 
     /**
@@ -46,7 +47,8 @@ class QuizController extends Controller
      */
     public function store(QuizCreateRequest $request)
     {
-        return $request->post();
+        Quiz::create($request->post());
+        return redirect()->route('quizzes.index')->withsuccess('Quiz Başarıyla Oluşturuldu ');
     }
 
     /**
@@ -68,7 +70,9 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        //
+        $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
+        return view('admin.quiz.edit', compact('quiz'));
+
     }
 
     /**
@@ -91,6 +95,6 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "elma";
     }
 }
