@@ -5,27 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
-use App\Http\Requests\QuizCreateRequest;
+use App\Http\Request\QuestionCreateRequest;
 
 
-
-class QuizController extends Controller
-
-
-
-
-
-
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $quizzes = Quiz::paginate(5);
-        return view('admin.quiz.list',compact('quizzes'));
+         $quiz = Quiz::whereId($id)->with('questions')->first() ?? abort(404,'Quiz not found');
+        return view('admin.question.list',compact('quiz'));
     }
 
     /**
@@ -33,10 +26,12 @@ class QuizController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
+
     {
-        return view('admin.quiz.create');
-        
+        $quiz = Quiz::find($id);
+        return view('admin.question.create',compact('quiz'));
+
     }
 
     /**
@@ -45,10 +40,9 @@ class QuizController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(QuizCreateRequest $request)
+    public function store(QuestionCreateRequest $request)
     {
-        Quiz::create($request->post());
-        return redirect()->route('quizzes.index')->withsuccess('Quiz Başarıyla Oluşturuldu ');
+        return $request->post();
     }
 
     /**
@@ -59,7 +53,6 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -70,9 +63,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
-        return view('admin.quiz.edit', compact('quiz'));
-
+        //
     }
 
     /**
@@ -95,8 +86,6 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
-        $quiz->delete();
-        return redirect()->route('quizzes.index')->withSuccess('Quiz silme işlemi başarıyla gerçekleşti');
+        //
     }
 }
