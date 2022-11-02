@@ -26,11 +26,11 @@ class QuestionCreateRequest extends FormRequest
         return [
             'question' => 'required|min:3',
             'image' => 'image|nullable|file|size:1024|mines:jpg,jpeg,png',
-            'answer1' => 'required|min:3',
-            'answer2' => 'required|min:3',
-            'answer3' => 'required|min:3',
-            'answer4' => 'required|min:3',
-            'correct_answer' => 'required|min:3',
+            'answer1' => 'required|min:1',
+            'answer2' => 'required|min:1',
+            'answer3' => 'required|min:1',
+            'answer4' => 'required|min:1',
+            'correct_answer' => 'required|min:1',
             
         ];
     }

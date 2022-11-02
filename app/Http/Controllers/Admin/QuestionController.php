@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Http\Request\QuestionCreateRequest;
+use Illuminate\Support\Str;
 
 
 class QuestionController extends Controller
@@ -25,7 +26,7 @@ class QuestionController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function create($id)
 
     {
@@ -77,7 +78,6 @@ class QuestionController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
