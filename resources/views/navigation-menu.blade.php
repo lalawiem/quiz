@@ -110,12 +110,14 @@
                                 {{ __('Quizler') }}
                             </x-jet-dropdown-link>
 
+                          
+                        
 
                             @endif
 
-
-
-
+                            <x-jet-dropdown-link href="{{ route('quizzes.index') }}">
+                                {{ __('Sorular') }}
+                            </x-jet-dropdown-link>
 
 
                             <div class="block px-4 py-2 text-xs text-gray-400">

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuizCreateRequest extends FormRequest
+class QuizUpdateRequest extends FormRequest
 {
-    
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +13,7 @@ class QuizCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return true; 
     }
 
     /**
@@ -27,10 +27,9 @@ class QuizCreateRequest extends FormRequest
             'title'=>'required|min:3|max:200',
             'description'=>'max:1000',
             'finished_at'=>'nullable|after:'.now()
-
+            
         ];
     }
-
 
     public function attributes()
     {

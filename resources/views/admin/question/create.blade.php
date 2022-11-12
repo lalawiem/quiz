@@ -1,9 +1,4 @@
 <x-app-layout>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
-    </script>
 
     <x-slot name="header">{{$quiz->title}} için yeni soru oluştur</x-slot>
 
@@ -12,7 +7,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{route('questions.store',$quiz->id)}}">
+            <form method="POST" action="{{route('questions.store',$quiz->id)}} " enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label>Soru</label>
@@ -59,10 +54,14 @@
                 <div class="form-group">
                     <label>Doğru Cevap</label>
                     <select name="correct_answer" class="form-control">
-                        <option @if(old('correct_answer')==='answer1' ) checked @endif value="answer1">1. Cevap</option>
-                        <option @if(old('correct_answer')==='answer2' ) checked @endif value="answer4">2. Cevap</option>
-                        <option @if(old('correct_answer')==='answer3' ) checked @endif value="answer3">3. Cevap</option>
-                        <option @if(old('correct_answer')==='answer4' ) checked @endif value="answer2">4. Cevap</option>
+                        <option @if(old('correct_answer')==='answer1' ) selected @endif value="answer1">1. Cevap
+                        </option>
+                        <option @if(old('correct_answer')==='answer2' ) selected @endif value="answer4">2. Cevap
+                        </option>
+                        <option @if(old('correct_answer')==='answer3' ) selected @endif value="answer3">3. Cevap
+                        </option>
+                        <option @if(old('correct_answer')==='answer4' ) selected @endif value="answer2">4. Cevap
+                        </option>
 
                     </select>
                 </div>
@@ -75,8 +74,4 @@
             </form>
         </div>
     </div>
-
-
-
-
 </x-app-layout>

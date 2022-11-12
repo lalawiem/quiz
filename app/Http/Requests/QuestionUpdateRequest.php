@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuestionCreateRequest extends FormRequest
+class QuestionUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class QuestionCreateRequest extends FormRequest
     {
         return [
             'question' => 'required|min:3',
-            'image' => 'image|nullable|file|size:1024|mines:jpg,jpeg,png',
+            'image' => 'image|nullable|file|size:12|mimes:jpg,jpeg,png',
             'answer1' => 'required|min:1',
             'answer2' => 'required|min:1',
             'answer3' => 'required|min:1',
@@ -49,5 +49,4 @@ class QuestionCreateRequest extends FormRequest
             
         ];
     }
-
 }
