@@ -3,7 +3,7 @@
 
 
 
-    <div class="card">
+    <div class="card container mt-3">
         <div class="card-body">
             <h5 class="card-title float-right">
                 <a href="{{route('quizzes.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Quiz
@@ -15,7 +15,7 @@
                     <div class="col-md-2">
                         <input type="text" name="title" value="{{request()->get('title')}}" placeholder="Quiz Adı" class="form-control">
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 mt-1">
                         <select class="form-control" onchange="this.form.submit()" name="status">
                             <option value="">Durum Seçiniz </option>
                             <option @if(request()->get('status')=='publish') selected @endif value="publish">Aktif </option>
@@ -30,7 +30,7 @@
                     @endif
                 </div>
             </form>
-            <table class="table table-bordered">
+            <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
                         <th scope="col">Quiz</th>

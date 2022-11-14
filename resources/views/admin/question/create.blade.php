@@ -5,21 +5,21 @@
 
 
 
-    <div class="card">
+    <div class="card container mt-3">
         <div class="card-body">
             <form method="POST" action="{{route('questions.store',$quiz->id)}} " enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label>Soru</label>
                     <textarea name="question" class="form-control" rows=4">{{ old('question') }}</textarea>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label>Fotoğraf</label>
                     <input type="file" name="image" class="form-control">
                 </div>
 
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label> 1. Cevap</label>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label> 3 Cevap</label>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label>Doğru Cevap</label>
                     <select name="correct_answer" class="form-control">
                         <option @if(old('correct_answer')==='answer1' ) selected @endif value="answer1">1. Cevap
@@ -68,7 +68,7 @@
 
 
 
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <button type="submit" class="btn btn-success btn-sm btn-block">Soru Oluştur</button>
                 </div>
             </form>

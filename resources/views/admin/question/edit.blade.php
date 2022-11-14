@@ -3,18 +3,18 @@
 
     <x-slot name="header">{{$question->question}} Düzenle</x-slot>
 
-    <div class="card">
+    <div class="card container mt-3">
         <div class="card-body">
             <form method="POST" action="{{route('questions.update',[$question->quiz_id,$question->id])}} "enctype="multipart/form-data"> 
 
             @csrf
             @method('PUT')
-            <div class="form-group">
+            <div class="form-group mt-2">
                 <label>Soru</label>
                 <textarea name="question" class="form-control" rows=4">{{ $question->question }}</textarea>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mt-2">
                 <label>Fotoğraf</label>
                 @if($question->image)
                 <a href="{{ asset($question->image) }}" target="_blank">
@@ -25,7 +25,7 @@
                 <input type="file" name="image" class="form-control">
             </div>
 
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label> 1. Cevap</label>
@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label> 3 Cevap</label>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mt-2">
                 <label>Doğru Cevap</label>
                 <select name="correct_answer" class="form-control">
                     <option @if($question->correct_answer==='answer1') selected @endif value="answer1">1. Cevap</option>
@@ -70,8 +70,8 @@
 
 
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-success btn-sm btn-block">Soruyu Güncelle </button>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary btn-sm btn-block"">Soruyu Güncelle </button>
             </div>
             </form>
         </div>

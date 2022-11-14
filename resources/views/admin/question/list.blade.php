@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">{{$quiz->title}} Quizine ait Sorular</x-slot>
 
-    <div class="card">
+    <div class="card container mt-3">
         <div class="card-body">
             <h5 class="card-title">
                 <a href="{{route('questions.create', $quiz->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Soru Oluştur</a>

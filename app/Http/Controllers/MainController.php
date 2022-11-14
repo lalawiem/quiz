@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use App\Models\Quiz;
 
 class MainController extends Controller
@@ -12,8 +12,13 @@ class MainController extends Controller
         return view('dashboard' ,compact('quizzes'));
     }
 
+    public function quiz($slug){
+        $quiz = Quiz::whereSlug($slug)->with('questions')->first();
+        return view('quiz',compact('quiz'));
+    }
+
     public function quiz_detail($slug){
-        $quiz = Quiz::whereSlug($slug)->first() ?? abort(404, 'Quiz bulunamadı');
+        $quiz = Quiz::whereSlug($slug)->withCount('questions')->first() ?? abort(404, 'Quiz bulunamadı');
         return view('quiz_detail', compact('quiz'));
     }
 }
