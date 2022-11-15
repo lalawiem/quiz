@@ -2,9 +2,6 @@
 
     <x-slot name="header">{{$quiz->title}} için yeni soru oluştur</x-slot>
 
-
-
-
     <div class="card container mt-3">
         <div class="card-body">
             <form method="POST" action="{{route('questions.store',$quiz->id)}} " enctype="multipart/form-data">

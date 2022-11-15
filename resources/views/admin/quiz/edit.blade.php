@@ -27,33 +27,36 @@
                     </select>
                 </div>
                 <div class="form-group mt-2">
-                    <input id="isFinished" @if(old('finished_at')) checked @endif type="checkbox">
+                    <input id="isFinished" @if($quiz->finished_at) checked @endif type="checkbox">
                     <label>Bitiş Tarihi Olacak mı? </label>
                 </div>
 
-                <div id="finishedInput" @if(old('finished_at')) style="display:none" @endif class="form-group mt-2">
+                <div id="finishedInput" @if(!$quiz->finished_at) style="display: none;" @endif class="form-group mt-2">
                     <label>Bitiş Tarihi </label>
-                    <input type="datetime-local" name="finished_at" value="{{ old('finished_at') }}"
+                    <input type="datetime-local" name="finished_at" value="{{ $quiz->finished_at}}"
                         class="form-control">
                 </div>
 
                 <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-success btn-sm btn-block">Quiz Güncelle</button>
+                    <button type="submit" class="btn btn-success btn-sm btn-block">Quiz güncelle</button>
                 </div>
             </form>
         </div>
     </div>
     <x-slot name="js">
-        <script>
-        $('#isFinished').change(function() {
-            if ($('#isFinished').is(':checked')) {
+        <!-- <script>
+        $('#isFinished').change(function() 
+        {
+            if($('#isFinished').is(':checked')) 
+            {
                 $('#finishedInput').show();
-            }
-            if
-            else {
+            }else {
                 $('#finishedInput').hide();
             }
         })
-        </script>
+        </script> -->
+
+
+
     </x-slot>
 </x-app-layout>

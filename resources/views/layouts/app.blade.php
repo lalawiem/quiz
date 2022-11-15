@@ -16,17 +16,9 @@
 
     <!-- Styles -->
     @livewireStyles
-
-
-
-
-
 </head>
-
-
 <body class="font-sans antialiased">
     <x-jet-banner />
-
     <div class="min-h-screen bg-gray-100">
         @livewire('navigation-menu')
 
@@ -38,32 +30,21 @@
             </div>
         </header>
         @endif
-
-
-
         <!-- Page Content -->
         <main>
-
             @if($errors->any())
             <div class="alert alert-danger" @foreach($errors->all() as $error)
                 <li>{{$error}}</li>
                 @endforeach
             </div>
             @endif
-
             @if(session('success'))
             <div class="alert alert-success">
                 {{session('success')}}
-
-            @endif
-
-            {{ $slot }}
-
-
+                @endif
+                {{ $slot }}
         </main>
     </div>
-
-
     @stack('modals')
     @isset($js)
     {{$js}}

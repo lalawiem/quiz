@@ -1,3 +1,5 @@
+
+
 <x-app-layout>
 
     <x-slot name="header">Quiz Oluştur </x-slot>
@@ -25,10 +27,9 @@
                     <label>Bitiş Tarihi Olacak mı? </label>
                 </div>
 
-                <div id="finishedInput" @if(old('finished_at')) style="display:none" @endif class="form-group mt-2">
+                <div id="finishedInput" @if(!old('finished_at')) style="display: none;" @endif class="form-group mt-2">
                     <label>Bitiş Tarihi </label>
-                    <input type="datetime-local" name="finished_at" value="{{ old('finished_at') }}"
-                        class="form-control">
+                    <input type="datetime-local" name="finished_at" class="form-control" value="{{old('finished_at')}}">
                 </div>
 
                 <div class="form-group mt-3">
@@ -39,10 +40,12 @@
     </div>
     <x-slot name="js">
         <script>
-        $('#isFinished').change(function() {
-            if ($('#isFinished').is(':checked')) {
+        $('#isFinished').change(function() 
+        {
+            if($('#isFinished').is(':checked')) 
+            {
                 $('#finishedInput').show();
-            } else {
+            }else {
                 $('#finishedInput').hide();
             }
         })

@@ -6,7 +6,7 @@
     <div class="card container mt-3">
         <div class="card-body">
             <h5 class="card-title float-right">
-                <a href="{{route('quizzes.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Quiz
+                <a href="{{route('quizzes.create')}}" class="btn btn-sm btn-primary mt-4"><i class="fa fa-plus"></i>Quiz
                     Oluştur</a>
             </h5>
 
@@ -24,7 +24,7 @@
                         </select>   
                     </div>
                     @if(request()->get('title') || request()->get('status'))
-                     <div class="col-md-2">
+                     <div class="col-md-2 mt-2">
                         <a href="{{route('quizzes.index')}}" class="btn btn-secondary">Sıfırla</a>
                     </div>
                     @endif
