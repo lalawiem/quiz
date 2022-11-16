@@ -40,15 +40,15 @@
     </div>
     <x-slot name="js">
         <script>
-        $('#isFinished').change(function() 
-        {
-            if($('#isFinished').is(':checked')) 
+            $('#isFinished').change(function() 
             {
-                $('#finishedInput').show();
-            }else {
-                $('#finishedInput').hide();
-            }
-        })
+                if($('#isFinished').is(':checked')) 
+                {
+                    $('#finishedInput').show();
+                }else {
+                    $('#finishedInput').hide();
+                }
+            })
         </script>
     </x-slot>
 

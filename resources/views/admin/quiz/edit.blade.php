@@ -44,8 +44,8 @@
         </div>
     </div>
     <x-slot name="js">
-        <!-- <script>
-        $('#isFinished').change(function() 
+        <script>
+        $('#isFinished').change(function()  
         {
             if($('#isFinished').is(':checked')) 
             {
@@ -54,7 +54,7 @@
                 $('#finishedInput').hide();
             }
         })
-        </script> -->
+        </script>
 
 
 
