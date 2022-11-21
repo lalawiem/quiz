@@ -10,7 +10,7 @@
                 <strong>#{{$loop->iteration}}</strong> {{$question->question}}
 
                 @if($question->image)
-                <img src="{{asset($question->image)}}" style="width: 50%" class="img-responsive ">
+                <img src="{{asset($question->image)}}" style="width: 50%" class="img-responsive">
                 @endif
 
                 <div class="form-check mt-2">

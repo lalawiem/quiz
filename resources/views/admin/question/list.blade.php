@@ -4,7 +4,7 @@
     <div class="card container mt-3">
         <div class="card-body">
             <h5 class="card-title">
-                <a href="{{route('questions.create', $quiz->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Soru Oluştur</a>
+                <a href="{{route('questions.create', $quiz->id)}}" class="btn btn-sm btn-primary "><i class="fa fa-plus"></i>Soru Oluştur</a>
             </h5>
             <table class="table table-bordered">
                 <thead>

@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-success btn-sm btn-block">Quiz Oluştur</button>
+                    <button type="submit" class="btn btn-success btn-sm w-100">Quiz Oluştur</button>
                 </div>
             </form>
         </div>

@@ -66,7 +66,7 @@
 
 
                 <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-success btn-sm btn-block">Soru Oluştur</button>
+                    <button type="submit" class="btn btn-success btn-sm w-100">Soru Oluştur</button>
                 </div>
             </form>
         </div>

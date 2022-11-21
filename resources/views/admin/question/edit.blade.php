@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-primary btn-sm btn-block"">Soruyu Güncelle </button>
+                    <button type="submit" class="btn btn-primary btn-sm w-100"">Soruyu Güncelle </button>
             </div>
             </form>
         </div>

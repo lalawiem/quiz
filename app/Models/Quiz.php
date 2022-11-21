@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -17,9 +15,16 @@ class Quiz extends Model
 
     protected $dates=['finished_at'];
     public function getFinishedAtAttribute($date){
-        return $date ? Carbon::parse($date) : null;
+        return $date ? Carbon::parse($date) : null; 
 
     }
+
+    public function my_result(){
+        return $this->hasOne('App\Models\Result')->where('user_id',auth()->user()->id);
+    }
+
+   
+
 
     public function questions(){
         return $this->hasMany('App\Models\Question');       
