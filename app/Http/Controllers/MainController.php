@@ -12,22 +12,31 @@ class MainController extends Controller
 {
     public function dashboard(){
          $quizzes = Quiz::where('status','publish')->withCount('questions')->paginate(5);
-        return view('dashboard' ,compact('quizzes'));
+        return view('dashboard' ,compact('quizzes'));   
     }
-
+    
     public function quiz($slug){
-        $quiz = Quiz::whereSlug($slug)->with('questions')->first();
+        $quiz = Quiz::whereSlug($slug)->with('questions.my_answer')->first() ?? abort(404, 'Quiz bulunamadı');
+        if($quiz->my_result){
+            return view('quiz_result', compact('quiz'));
+        }
+
         return view('quiz',compact('quiz'));
     }
 
     public function quiz_detail($slug){
-         $quiz = Quiz::whereSlug($slug)->with('my_result')->withCount('questions')->first() ?? abort(404, 'Quiz bulunamadı');
+        $quiz = Quiz::whereSlug($slug)->with('my_result','topTen.user')->withCount('questions')->first() ?? abort(404, 'Quiz bulunamadı');
         return view('quiz_detail', compact('quiz'));
     }
 
     public function result(Request $request, $slug){
         $quiz = Quiz::with('questions')->whereSlug($slug)->first() ?? abort(404, 'Quiz bulunamadı');
         $correct = 0;
+
+        if($quiz->my_result){
+            abort(404,"Bu Quiz'e daha önce katıldınız.");
+            // return redirect()->route('dashboard')->with
+        }
 
 
         foreach($quiz->questions as $question){
@@ -39,7 +48,7 @@ class MainController extends Controller
 
 
          
-        if($question->correct_answer==$request->post($question->id)){
+        if($question->correct_answer===$request->post($question->id)){
             $correct+=1;
 
         }

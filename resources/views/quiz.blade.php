@@ -48,7 +48,7 @@
                 <hr>
                 @endif
                 @endforeach
-                <button type="submit" class="btn btn-success btn-sm btn-block">Sınavı Bitir</button>
+                <button type="submit" class="btn btn-success btn-sm w-100 mt-3">Sınavı Bitir</button>
             </form>
 
             </p>
