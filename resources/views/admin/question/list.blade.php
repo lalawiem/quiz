@@ -3,10 +3,17 @@
 
     <div class="card container mt-3">
         <div class="card-body">
-            <h5 class="card-title">
-                <a href="{{route('questions.create', $quiz->id)}}" class="btn btn-sm btn-primary "><i class="fa fa-plus"></i>Soru Oluştur</a>
+
+            <h5 class="card-title float-right">
+                <a href="{{route('questions.create', $quiz->id)}}" class="btn btn-sm btn-primary "><i
+                        class="fa fa-plus"></i> Soru Oluştur</a>
             </h5>
-            <table class="table table-bordered">
+
+            <h5 class="card-title">
+                <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary"><i
+                        class="fa fa-arrow-left"></i> Quizlere Dön</a>
+            </h5>
+            <table class="table table-bordered table-sm">
                 <thead>
                     <tr>
                         <th scope="col">Soru</th>
@@ -29,8 +36,10 @@
                         <td class="text-success">{{substr($question->correct_answer,-1)}}. Cevap</td>
                         <td>
 
-                            <a href="{{route('questions.edit',[$quiz->id,$question->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                            <a href="{{route('questions.destroy',[$quiz->id,$question->id])}}" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
+                            <a href="{{route('questions.edit',[$quiz->id,$question->id])}}"
+                                class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <a href="{{route('questions.destroy',[$quiz->id,$question->id])}}"
+                                class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
 
                         </td>
                     </tr>
