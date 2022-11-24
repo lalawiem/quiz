@@ -3,8 +3,31 @@
     <div class="card container mt-3">
         <div class="card-body">
             <p class="card-text">
+            <div class="row container">
 
-            <div class="row container mt-10">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Quiz Sonuçları</strong>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            @foreach($results as $result)
+                            <li class="list-group-item">
+                                <!-- <span class="badge bg-success badge-pill">{{$result->point}}</span>  -->
+                                @if( $result->point<'50') <span class="badge bg-danger badge-pill">
+                                    {{$result->point}}</span>
+                                @else( $result->point>'50') <span class="badge bg-success badge-pill">
+                                        {{$result->point}}</span>
+                                @endif
+                                    <a href="{{route('quiz_detail',$result->quiz->slug)}}">
+                                        {{$result->quiz->title}}
+                                    </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="col-md-8">
                     <div class="list-group">
                         @foreach($quizzes as $quiz)
@@ -19,13 +42,10 @@
                         </a>
                         @endforeach
                         <div class="mt-2">
-
                             {{$quizzes->links()}}
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    deneme
-                </div>
+
             </div>
 </x-app-layout>
