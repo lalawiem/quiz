@@ -1,16 +1,16 @@
 <x-app-layout>
-    <x-slot name="header">{{$quiz->title}}</x-slot>
+    <x-slot name="header">
+        <h4>{{$quiz->title}}</h4><small> {{$quiz->description}} </small>
+    </x-slot>
     <div class="card container mt-3">
         <div class="card-body">
             <p class="card-text">
             <h5 class="card-title">
-                <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-left"></i> Quizlere Dön</a>
+                <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-left"></i>
+                    Quizlere Dön</a>
             </h5>
+
             <div class="row">
-                
-            
-
-
                 <div class="col-md-4">
                     <ul class="list-group">
                         @if($quiz->finished_at)
@@ -35,8 +35,8 @@
                             <span class="badge bg-dark badge-pill">{{$quiz->details['average']}}</span>
                         </li>
                         @endif
-                    </ul>
-                    @if(count($quiz->topTen)> 0)
+
+                        @if(count($quiz->topTen)> 0)
                     <div class="card mt-3">
                         <div class="card-body">
                             <h5 class="card-title">İlk 10</h5>
@@ -54,11 +54,10 @@
                         </div>
                     </div>
                     @endif
+                    </ul>
                 </div>
-
                 <div class="col-md-8">
-                    {{$quiz->description}}
-                    <table class="table table-bordered mt-3">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Ad Soyad</th>
@@ -83,5 +82,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </x-app-layout>

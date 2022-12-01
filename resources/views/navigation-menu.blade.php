@@ -4,11 +4,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
-                    </a>
-                </div>
+             
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -32,7 +28,7 @@
                                     <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd"
-                                            d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                            d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"  
                                             clip-rule="evenodd" />
                                     </svg>
                                 </button>
@@ -110,14 +106,16 @@
                                 {{ __('Quizler') }}
                             </x-jet-dropdown-link>
 
+                            <x-jet-dropdown-link href="{{ route('questions.index') }}">
+                                {{ __('Sorular') }}
+                            </x-jet-dropdown-link>
+
                           
                         
 
                             @endif
 
-                            <x-jet-dropdown-link href="{{ route('quizzes.index') }}">
-                                {{ __('Sorular') }}
-                            </x-jet-dropdown-link>
+                          
 
 
                             <div class="block px-4 py-2 text-xs text-gray-400">
@@ -191,18 +189,6 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}"

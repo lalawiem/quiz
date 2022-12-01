@@ -21,8 +21,6 @@ class Quiz extends Model
             if(auth()->user()->id == $result->user_id){
                 return $rank;
             }
-
-
         }
     }
 

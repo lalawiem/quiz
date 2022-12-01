@@ -8,7 +8,7 @@ use App\Http\Request\QuestionCreateRequest;
 
 class Question extends Model
 {
-    protected $fillable =['question', 'answer1', 'answer2', 'answer3', 'answer4', 'correct_answer','image'];
+    protected $fillable =['question', 'answer1', 'answer2', 'answer3', 'answer4', 'correct_answer','image','quiz_id',];
 
 
 

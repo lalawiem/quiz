@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Models\Question;
 use App\Http\Requests\QuestionCreateRequest;
 use App\Http\Requests\QuestionUpdateRequest;
 use Illuminate\Support\Str;
@@ -17,22 +18,24 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-         $quiz = Quiz::whereId($id)->with('questions')->first() ?? abort(404,'Quiz not found');
-        return view('admin.question.list',compact('quiz'));
+        $questions = Question::all();
+        return view('admin.question.list',compact('questions'));
     }
+
+  
 
     /** 
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */ 
-    public function create($id)
+    public function create()
 
     {
-        $quiz = Quiz::find($id);
-        return view('admin.question.create',compact('quiz'));
+        $quizzes = Quiz::all();
+        return view('admin.question.create',compact('quizzes'));
 
     }
 
@@ -42,8 +45,9 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(QuestionCreateRequest $request,$id)
+    public function store(QuestionCreateRequest $request)
     {
+        
         if($request->hasFile('image')){
             $fileName = Str::slug($request->question).'.'.$request->image->extension();
             $fileNameWithUpload = 'uploads/'.$fileName; 
@@ -52,10 +56,11 @@ class QuestionController extends Controller
                 'image'=>$fileNameWithUpload
             ]);
         }
-
-        Quiz::find($id)->questions()->create($request->post());
+        Question::create($request->post());
         
-        return redirect()->route('questions.index',$id)->withSuccess('Soru başarıyla oluşturuldu');
+
+        
+        return redirect()->route('questions.index')->withSuccess('Soru başarıyla oluşturuldu');
     }
 
     /**
@@ -64,8 +69,11 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show() 
     {
+        $question = Question::all();
+        $quiz=Quiz::all();
+        return view('admin.',compact(['question','quiz']));
     }
 
     /**
@@ -76,7 +84,7 @@ class QuestionController extends Controller
      */ 
     public function edit($quiz_id,$question_id)
     {
-       $question = Quiz::find($quiz_id)->questions()->whereId($question_id)->first() ?? abort(404, 'Quiz veya Soru bulunamadı');
+        $question = Quiz::withCount('questions')->find($id)->questions()->whereId($question)->first() ?? abort(404, 'Quiz veya Soru bulunamadı');
        return view('admin.question.edit',compact('question')); 
         
     }
@@ -121,4 +129,6 @@ class QuestionController extends Controller
         return redirect()->route('questions.index',$quiz_id)->withSuccess('Soru başarıyla silindi.');
 
     }
+
+    
 }

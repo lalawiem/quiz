@@ -71,4 +71,10 @@ class MainController extends Controller
         return redirect()->route('quiz_detail', $quiz->slug)->withSuccess("Başarıyla Quiz'i Bitirdin Puanın : ".$point);
     }
 
+    public function quizshow(Quiz $quiz)
+    {
+        $question = $quiz->$question();
+        return view('admin.quiz.quizshow', compact('question','quiz'));
+    }
+
 }

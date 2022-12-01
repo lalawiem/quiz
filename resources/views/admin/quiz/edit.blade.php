@@ -7,19 +7,18 @@
                 @csrf
                 @method('PUT')
                 <div class="form-group mt-2 ">
-                    <label>Quiz Başlığı</label>
+                    <strong><label>Quiz Başlığı:</label></strong>
                     <input type="text" name="title" class="form-control " value="{{$quiz->title}}">
                 </div>
                 <div class="form-group mt-2">
-                    <label>Quiz Açıklama</label>
+                    <strong><label>Quiz Açıklaması:</label></strong>
                     <textarea name="description" class="form-control " rows=4"> {{$quiz->description}}</textarea>
                 </div>
                 <div class="form-group mt-2">
-                    <label>Quiz Durumu</label>
+                    <strong><label>Quiz Durumu:</label></strong>
                     <select name="status" class="form-control ">
-                        <option @if($quiz->questions_count<4) disabled @endif @if($quiz->status==='publish') selected
-                                @endif value="publish">
-                                Aktif
+                        <option @if($quiz->questions_count<4) disabled @endif
+                        @if($quiz->status==='publish') selected @endif value="publish">Aktif
                         </option>
                         <option @if($quiz->status==='passive') selected @endif value="passive">Pasif</option>
                         <option @if($quiz->status==='draft') selected @endif value="draft">Taslak</option>
@@ -28,11 +27,11 @@
                 </div>
                 <div class="form-group mt-2">
                     <input id="isFinished" @if($quiz->finished_at) checked @endif type="checkbox">
-                    <label>Bitiş Tarihi Olacak mı? </label>
+                    <strong><label>Bitiş Tarihi Olacak mı? </label></strong>
                 </div>
 
                 <div id="finishedInput" @if(!$quiz->finished_at) style="display: none;" @endif class="form-group mt-2">
-                    <label>Bitiş Tarihi </label>
+                    <strong><label>Bitiş Tarihi: </label></strong>
                     <input type="datetime-local" name="finished_at" value="{{ $quiz->finished_at}}"
                         class="form-control">
                 </div>

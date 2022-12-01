@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Models\Question;
 use App\Http\Requests\QuizCreateRequest;
 use App\Http\Requests\QuizUpdateRequest;
 
@@ -21,6 +22,7 @@ class QuizController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $quizzes = Quiz::withCount('questions');
@@ -67,9 +69,15 @@ class QuizController extends Controller
      */
     public function show($id)
     {
+        $questions = Quiz::find($id)->questions;
         $quiz = Quiz::with('topTen.user','results.user')->withCount('questions')->find($id) ?? abort(404, 'Quiz bulunamadı');
-        return view('admin.quiz.show',compact('quiz'));
+        return view('admin.quiz.show',compact(['quiz','questions']));
 
+    }
+    public function soruGor($id)
+    {
+        $questions = Quiz::find($id)->questions;
+        return view('admin.quiz.questions',compact('questions'));
     }
 
     /**
@@ -99,9 +107,6 @@ class QuizController extends Controller
         Quiz::find($id)->update($request->except(['_method','_token']));
 
         return redirect()->route('quizzes.index')->withsuccess('Quiz Güncelleme İşlemi Başarıyla Gerçekleştirildi. ');
-
-
-
         
     }
 
@@ -111,10 +116,17 @@ class QuizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Quiz $quiz)
     {
-        $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
-        $quiz->delete();
+        $quiz->delete();    
         return redirect()->route('quizzes.index')->withSuccess('Quiz Silme İşlemi Başarıyla Gerçekleştirildi.');
     }
+
+
+ 
+
+
+   
+
+ 
 }

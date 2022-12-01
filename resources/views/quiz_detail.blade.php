@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">{{$quiz->title}}</x-slot>
+    <x-slot name="header"> <h4>{{$quiz->title}}</h4></x-slot>
     <div class="card container mt-3">
         <div class="card-body">
             <p class="card-text">
@@ -12,12 +12,10 @@
                             <span title="{{$quiz->finished_at}}"
                                 class="badge bg-primary badge-pill">{{$quiz->my_rank}}</span>
                         </li>
-
-
                         @endif
 
                         @if($quiz->my_result)
-                        <li class="list-group-item d-flex justify-content-between align-items-center">Puan
+                        <li class="list-group-item d-flex justify-content-between align-items-center"><strong>Puan</strong>
                             <span title="{{$quiz->finished_at}}">
                             @if($quiz->my_result->point<'50') <span class="badge bg-danger badge-pill">
                                 {{$quiz->my_result->point}}</span>
@@ -26,20 +24,21 @@
                             @endif
 
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center"> Doğru / Yanlış
-                            Sayısı
+                        <li class="list-group-item d-flex justify-content-between align-items-center"><strong> Doğru / Yanlış Sayısı </strong>
                             <div class="float-right">
                                 <span title="{{$quiz->finished_at}}"
                                     class="badge bg-success badge-pill">{{$quiz->my_result->correct}} Doğru</span>
                                 <span title="{{$quiz->finished_at}}"
                                     class="badge bg-danger badge-pill">{{$quiz->my_result->wrong}} Yanlış</span>
-                            </div>
+                            </div> 
                         </li>
                         @endif
 
+                     
+
                         @if($quiz->finished_at)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Son Katılım Tarihi
+                        <strong> Son Katılım Tarihi </strong>
                             <span title="{{$quiz->finished_at}}"
                                 class="badge bg-warning text-black badge-pill">{{$quiz->finished_at->diffForHumans()}}</span>
                         </li>
@@ -60,16 +59,17 @@
                         </li>
                         @endif
                     </ul>
+
                     @if(count($quiz->topTen)> 0)
                     <div class="card mt-3">
                         <div class="card-body">
-                            <h5 class="card-title ml-2"> İlk 10</h5>
+                            <h5 class="card-title ml-2"> En Yüksek Puanlar:</h5>
                             <ul class="list-group">
                                 @foreach($quiz->topTen as $result)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <strong class="h5 mt-2">{{$loop->iteration}}.</strong>
                                     <img class="w-8 h8  rounded-full" src="{{$result->user->profile_photo_url}}">
-                                    <span @if(auth()->user()->id==$result->user_id) class="text-primary" @endif>{{$result->user->name}}</span>
+                                    <span @if(auth()->user()->id==$result->user_id) class="text-primary" @endif> <strong>{{$result->user->name}}</strong> </span>
                                     <span class="badge bg-dark badge-pill">{{$result->point}}</span>
                                 </li>
                                 @endforeach
