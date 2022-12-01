@@ -17,6 +17,12 @@ class MainController extends Controller
         $results = auth()->user()->results;
         return view('dashboard' ,compact('quizzes','results'));   
     }
+
+    public function about(){
+       return view('about');  
+   }
+
+
     
     public function quiz($slug){
         $quiz = Quiz::whereSlug($slug)->with('questions.my_answer','my_result')->first() ?? abort(404, 'Quiz bulunamadı');

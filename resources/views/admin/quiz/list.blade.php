@@ -38,9 +38,11 @@
                     <tr>
                         <th>Quiz</th>
                         <th style="text-align: center" scope="col">Soru Sayısı</th>
-                        <th style="text-align: center" scope="col">Durum</th>
+                        <th style="text-align: center" scope="col">Durum</th>   
                         <th style="text-align: center" scope="col">Bitiş Tarihi</th>
                         <th style="text-align: center" scope="col">İşlemler</th>
+                        <th style="text-align: center" scope="col">Sil</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -79,8 +81,13 @@
                                 <i class="fa fa-question"></i></a>
                             <a href="{{route('quizzes.edit', $quiz->id)}}" class="btn btn-sm btn-primary">
                                 <i class="fa fa-edit"></i></a>
-                            <a href="{{route('quizzes.destroy', $quiz->id)}}" class="btn btn-sm btn-danger">
-                                <i class="fa fa-times"></i></a>
+                                <td style="text-align: center">
+                                <form method="POST" action="{{route('quizzes.destroy',[$quiz->id])}}" >
+                                @method('DELETE')
+                                @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                                </form>
+                            </td>
 
                         
                         </td>
