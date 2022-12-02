@@ -73,7 +73,7 @@ class QuestionController extends Controller
     {
         $question = Question::all();
         $quiz=Quiz::all();
-        return view('admin.',compact(['question','quiz']));
+        return view('admin.quiz.show',compact(['question','quiz']));
     }
 
     /**
@@ -122,7 +122,7 @@ class QuestionController extends Controller
     public function destroy($quiz_id,$question_id)
     {
         Quiz::find($quiz_id)->questions()->whereId($question_id)->delete();
-        return redirect()->route('questions.index',$quiz_id)->withSuccess('Soru başarıyla silindi.');
+        return redirect()->route('admin.question.list',$quiz_id)->withSuccess('Soru başarıyla silindi.');
 
     }
 

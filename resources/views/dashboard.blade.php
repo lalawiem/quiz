@@ -2,20 +2,32 @@
     <x-slot name="header">Anasayfa - Sonuçlar </x-slot>
 
 
-    
+
+
 
     <div class="card container mt-3">
         <div class="card-body">
             <p class="card-text">
             <div class="row container">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header">
+                <!--  -->
+                <div class="col-md-3 mt-1" style='text-align:center'>
+                    <img class="rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
+                            alt="{{ Auth::user()->name }}" />
+                    <span class="inline-flex rounded-md mt-2">
+                        <button type="button"
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                           <strong> {{ Auth::user()->name }} </strong>
+                        </button>
+                    </span>
+
+            
+                    <div class="card mt-3">
+                    <div class="card-header">
                             <strong>Quiz Sonuçları</strong>
                         </div>
                         <ul class="list-group list-group-flush">
                             @foreach($results as $result)
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="text-align:left">
                                 <!-- <span class="badge bg-success badge-pill">{{$result->point}}</span>  -->
                                 <strong> Puan: </strong>
                                 @if($result->point<'50') <span class="badge bg-danger">
@@ -56,11 +68,6 @@
                             </div>
                         </a>
                         @endforeach
-
-
-
-
-
                         <div class="mt-2">
                             {{$quizzes->links()}}
                         </div>

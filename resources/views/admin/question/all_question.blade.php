@@ -4,20 +4,17 @@
     <div class="card container mt-3">
         <div class="card-body">
 
-            <h5 class="card-title float-right">
-            </h5>
 
-            <h5 class="card-title">
+            <h5 class="card-title float-left">
                 <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-left"></i>
                     Quizlere Dön</a>
             </h5>
-
             <h5 class="card-title float-right">
                 <a href="{{route('questions.create')}}" class="btn btn-sm btn-primary "><i class="fa fa-plus"></i> Soru
                     Oluştur</a>
             </h5>
 
-            <table class="table table-bordered mt-3">
+            <table class="table table-bordered mt-5">
                 <thead>
                     <tr>
                         <th scope="col">Soru:</th>
@@ -42,7 +39,7 @@
                     </tr>
                     @endforeach
 
-               
+                   
                 </thead>
             </table>
         </div>

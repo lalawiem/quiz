@@ -2,8 +2,9 @@
     <x-slot name="header">Quizler</x-slot>
 
 
+    
 
-    <div class="card container mt-1">
+    <div class="card container mt-3">
         <div class="card-body">
             <h5 class="card-title float-right">
                 <a href="{{route('quizzes.create')}}" class="btn btn-sm btn-primary mt-4"><i class="fa fa-plus"></i>Quiz
@@ -33,7 +34,7 @@
                     @endif
                 </div>
             </form>
-            <table class="table table-bordered mt-2">
+            <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
                         <th>Quiz</th>
