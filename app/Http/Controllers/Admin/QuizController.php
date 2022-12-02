@@ -122,6 +122,8 @@ class QuizController extends Controller
         return redirect()->route('quizzes.index')->withSuccess('Quiz Silme İşlemi Başarıyla Gerçekleştirildi.');
     }
 
+    
+
 
  
 

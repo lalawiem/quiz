@@ -3,15 +3,15 @@
         <div class="card-body">
 
             <h5 class="card-title float-right">
-                <a href="{{route('questions.create')}}" class="btn btn-sm btn-primary "><i
-                        class="fa fa-plus"></i> Soru Oluştur</a>
+                <a href="{{route('questions.create')}}" class="btn btn-sm btn-primary "><i class="fa fa-plus"></i> Soru
+                    Oluştur</a>
             </h5>
 
             <h5 class="card-title">
-                <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary"><i
-                        class="fa fa-arrow-left"></i> Quizlere Dön</a>
+                <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-left"></i>
+                    Quizlere Dön</a>
             </h5>
-            <table class="table table-bordered mt-3">   
+            <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
                         <th scope="col">Soru</th>
@@ -23,7 +23,7 @@
                         <th scope="col">Doğru Cevap</th>
                         <th scope="col" style="width: 125px; text-align: center">İşlemler </th>
 
-                    
+
 
                     </tr>
                     @foreach( $questions as $question)
@@ -35,15 +35,22 @@
                         <td>{{$question->answer3}}</td>
                         <td>{{$question->answer4}}</td>
                         <td class="text-success">{{substr($question->correct_answer,-1)}}. Cevap</td>
-                        <td style="text-align: center"> <a href="{{route('questions.edit', $question->id)}}" class="btn btn-sm btn-primary">
+                        <td style="text-align: center"> <a href="{{route('questions.edit', $question->id)}}"
+                                class="btn btn-sm btn-primary">
                                 <i class="fa fa-edit"></i></a>
-                            <a href="{{route('questions.destroy', $question->id)}}" class="btn btn-sm btn-danger">
-                                <i class="fa fa-times"></i></a>
+                        <td>
+
+                        <td style="text-align: center">
+                            <form method="POST" action="{{route('questions.destroy',[$question->id])}}">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
 
-                    
+
 
                 </thead>
 

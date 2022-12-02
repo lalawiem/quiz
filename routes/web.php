@@ -7,7 +7,7 @@ use  App\Http\Controllers\Admin\QuestionController;
 
  
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Route::group(['middleware'=>'auth'], function (){
@@ -26,6 +26,5 @@ Route::group(['middleware'=>'auth'], function (){
         Route::resource('/questions',QuestionController::class);
         Route::get('quiz/{id}/questions',[QuizController::class, 'soruGor'])->name('quizzes.soruGor');
 
-        // Route::get('questions',[QuestionController::class, 'show'])->name('questions');
 
 });         

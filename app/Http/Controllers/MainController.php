@@ -83,4 +83,6 @@ class MainController extends Controller
         return view('admin.quiz.quizshow', compact('question','quiz'));
     }
 
+    
+
 }

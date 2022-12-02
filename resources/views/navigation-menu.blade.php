@@ -9,11 +9,11 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Ana Sayfa') }}
+                        {{ __('Anasayfa') }}
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
-                        {{ __('HAKKIMDA') }}
+                        {{ __('Hakkımızda') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -74,6 +74,16 @@
                 @endif
 
                 <!-- Settings Dropdown -->
+
+                <form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+
+                                <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                    {{ __('Log Out') }}
+                                </x-jet-dropdown-link>
+                            </form>
+
+                            
                 <div class="ml-3 relative">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -139,13 +149,7 @@
                             <div class="border-t border-gray-100"></div>
 
                             <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}" x-data>
-                                @csrf
-
-                                <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
-                                </x-jet-dropdown-link>
-                            </form>
+                           
                         </x-slot>
                     </x-jet-dropdown>
                 </div>

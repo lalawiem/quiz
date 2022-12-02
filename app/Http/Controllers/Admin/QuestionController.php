@@ -18,13 +18,13 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
     public function index()
     {
         $questions = Question::all();
-        return view('admin.question.all_question',compact('questions'));
+        return view('admin.quiz.questions',compact('questions'));
     }
-
-  
 
     /** 
      * Show the form for creating a new resource.
@@ -57,23 +57,7 @@ class QuestionController extends Controller
             ]);
         }
         Question::create($request->post());
-        
-
-        
         return redirect()->route('questions.index')->withSuccess('Soru başarıyla oluşturuldu');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show() 
-    {
-        $question = Question::all();
-        $quiz=Quiz::all();
-        return view('admin.quiz.show',compact(['question','quiz']));
     }
 
     /**
@@ -105,13 +89,8 @@ class QuestionController extends Controller
                 'image'=>$fileNameWithUpload
             ]);
         }
-        dd($request->all());
-        Question::whereId($question->id)->update(
-            [
-                'question' => $request->question,
-                'quiz' => $question->quiz_id,
-            ]);
-        return redirect()->route('questions.index',$quiz_id)->withSuccess('Soru başarıyla güncellendi');
+       
+        return redirect()->route('questions.index')->withSuccess('Soru başarıyla güncellendi');
     }
     /**
      * Remove the specified resource from storage.
@@ -119,12 +98,17 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($quiz_id,$question_id)
+    public function destroy(Question $question)
     {
-        Quiz::find($quiz_id)->questions()->whereId($question_id)->delete();
-        return redirect()->route('admin.question.list',$quiz_id)->withSuccess('Soru başarıyla silindi.');
-
+       $question->delete();
+        return redirect()->route('questions.index')->withSuccess('Soru başarıyla silindi.');
     }
 
+    public function show() 
+    {
+        $question = Question::all();
+        $quiz=Quiz::all();
+        return view('admin.quiz.show',compact(['question','quiz']));
+    }
     
 }
