@@ -13,7 +13,7 @@
                     <input type="file" name="image" class="form-control">
                 </div>
                 <div class='col-md-6 form-group'>
-                <strong><label>Quiz:</label></strong> <br>
+                <strong><label>Quiz Seç:</label></strong> <br>
                     <select name="quiz_id">
                         <option>...</option>
                         @foreach($quizzes as $quiz)
