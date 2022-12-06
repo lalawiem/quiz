@@ -1,6 +1,12 @@
 <x-app-layout>
+<x-slot name="header"> <h4> Sorular</h4></x-slot>
+
     <div class="card container mt-3">
         <div class="card-body">
+
+        
+
+     
 
             <h5 class="card-title float-right">
                 <a href="{{route('questions.create')}}" class="btn btn-sm btn-primary "><i

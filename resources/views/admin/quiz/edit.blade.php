@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-slot name="header">Quiz Güncelle </x-slot>
+    <x-slot name="header"><h4>Quiz'i Düzenle</h4> </x-slot>
     <div class="card container mt-3">
         <div class="card-body ">
             <form method="POST" action="{{route('quizzes.update',$quiz->id)}}">

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">{{$question->question}} Düzenle</x-slot>
+    <x-slot name="header"><h5>Soruyu düzenle</h5></x-slot>
     
 
     <div class="card container mt-3">

@@ -4,16 +4,28 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('dashboard')}}">
+                        <img src="/public/uploads/voluptatem-qui-quo-consectetur-perferendis.jpg">
+                    </a>
+                </div>
 
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Anasayfa') }}
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">  
+                    <x-jet-nav-link href="{{ route('dashboard') }}"  :active="request()->routeIs('dashboard')">
+                    <i class="fa-solid fa-house mr-2"></i>  {{(' Anasayfa')}} 
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
-                        {{ __('Hakkımızda') }}
+                    <x-jet-nav-link href="{{ route('duyurular.index') }}" :active="request()->routeIs('duyurular')">
+                    <i class="fa-solid fa-bell mr-2"></i>   {{('Duyurular')}}
+
+
+
+                    
+
+
+
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -75,13 +87,7 @@
 
                 <!-- Settings Dropdown -->
 
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-
-                    <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
-                    </x-jet-dropdown-link>
-                </form>
+                
 
 
                 <div class="ml-3 relative">
@@ -90,8 +96,15 @@
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button
                                 class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                <img class="h-8 w-8 rounded-full object-cover"
-                                    src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <img class="h-12 w-12 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+
+                                <form method="POST" action="{{ route('logout') }}" x-data>
+                    @csrf
+
+                    <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                    <i class="fa-solid fa-right-from-bracket mt-2 mr-1"> </i>  {{('Çıkış yap')}} 
+                    </x-jet-dropdown-link>
+                </form>
                             </button>
                             @else
                             <span class="inline-flex rounded-md">
@@ -123,6 +136,10 @@
                             <x-jet-dropdown-link href="{{ route('questions.index') }}">
                                 {{ __('Sorular') }}
                             </x-jet-dropdown-link>
+
+                            <x-jet-dropdown-link href="{{ route('duyurular.index') }}">
+                                {{ __('Duyurular') }}
+                            </x-jet-dropdown-link>
                             @endif
 
                             <div class="block px-4 py-2 text-xs text-gray-400">
@@ -130,7 +147,7 @@
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Profilim') }}
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

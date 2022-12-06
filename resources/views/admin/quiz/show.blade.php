@@ -1,6 +1,7 @@
 <x-app-layout>
+    
     <x-slot name="header">
-        <h4>{{$quiz->title}}</h4><small> {{$quiz->description}} </small>
+        <h4>{{$quiz->title}}</h4><small> {{$quiz->description}}</small>
     </x-slot>
     <div class="card container mt-3">
         <div class="card-body">
@@ -35,6 +36,7 @@
                             <span class="badge bg-dark badge-pill">{{$quiz->details['average']}}</span>
                         </li>
                         @endif
+                        
 
                         @if(count($quiz->topTen)> 0)
                     <div class="card mt-3">
@@ -56,9 +58,42 @@
                     @endif
                     </ul>
                 </div>
+
+                
+                
                 <div class="col-md-8">
                     <table class="table table-bordered">
                         <thead>
+                            <tr>
+
+                            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="/public/storage/optio-consequuntur-accusamus-nisi-sapiente-consectetur-quisquam.jpg slide" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/public/storage/optio-consequuntur-accusamus-nisi-sapiente-consectetur-quisquam.jpg slide" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+                            </tr>
+                            
+                        
+                            
+     
                             <tr>
                                 <th scope="col">Ad Soyad</th>
                                 <th scope="col">Puan</th>

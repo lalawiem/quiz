@@ -1,5 +1,3 @@
-
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -9,23 +7,21 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations. 
+     * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('quizzes', function (Blueprint $table) {
+        Schema::create('duyurus', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->longText('description')->nullable();
-            $table->string('slug');
-            $table->enum('status',['publish', 'draft','passive'])->default('draft');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('finished_at')->nullable();
             $table->timestamps();
         });
-    }
-
+    } 
     /**
      * Reverse the migrations.
      *
@@ -33,6 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quizzes');
+        Schema::dropIfExists('duyurus');
+
     }
 };

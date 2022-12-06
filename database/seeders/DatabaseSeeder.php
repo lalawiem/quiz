@@ -21,10 +21,8 @@ class DatabaseSeeder extends Seeder
             QuizSeeder::class,
             QuestionSeeder::class,
             AnswerSeeder::class,
-            ResultSeeder::class
-            
-            
-
+            ResultSeeder::class,
+            DuyuruSeeder::class,
         ]);
 
 

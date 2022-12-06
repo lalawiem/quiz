@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">Anasayfa - Sonuçlar </x-slot>
+    <x-slot name="header"><h4>Anasayfa - Sonuçlar</h4> </x-slot>
 
 
 
@@ -10,8 +10,8 @@
             <p class="card-text">
             <div class="row container">
                 <!--  -->
-                <div class="col-md-3 mt-1" style='text-align:center'>
-                    <img class="rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
+                <div class="col-md-3" style="text-align:center">
+                    <img class="rounded text-align:center " src="{{ Auth::user()->profile_photo_url }}"
                             alt="{{ Auth::user()->name }}" />
                     <span class="inline-flex rounded-md mt-2">
                         <button type="button"
@@ -21,7 +21,7 @@
                     </span>
 
             
-                    <div class="card mt-3">
+                    <div class="card mt-2">
                     <div class="card-header">
                             <strong>Quiz Sonuçları</strong>
                         </div>

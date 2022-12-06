@@ -24,7 +24,6 @@
                         <th scope="col" style="width: 125px; text-align: center">İşlemler </th>
 
 
-
                     </tr>
                     @foreach( $questions as $question)
                     <tr>

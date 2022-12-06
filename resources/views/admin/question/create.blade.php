@@ -1,4 +1,7 @@
+
 <x-app-layout>
+<x-slot name="header"><h4> Soru Oluştur</h4> </x-slot>
+
     <div class="card container mt-3">
         <div class="card-body">
             <form method="POST" action="{{route('questions.store')}} " enctype="multipart/form-data">

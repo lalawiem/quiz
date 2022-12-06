@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuizCreateRequest extends FormRequest 
+class DuyuruCreateRequest extends FormRequest
 {
-    
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,22 +24,17 @@ class QuizCreateRequest extends FormRequest
     {
         return [
             'title'=>'required|min:3|max:200',
-            'description'=>'max:1000',
             'finished_at'=>'nullable|after:'.now()
+
 
         ];
     }
 
-
     public function attributes()
-    {   
-return 
-       [
-            'title'=>'Quiz Başlığı',
-            'description'=>'Quiz Açıklaması',
+    {
+        return [
+            'title'=>'Duyuru Başlığı',
             'finished_at'=>'Bitiş Tarihi'
-            
-
         ];
     }
 }

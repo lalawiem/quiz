@@ -18,9 +18,8 @@ class MainController extends Controller
         return view('dashboard' ,compact('quizzes','results'));   
     }
 
-    public function about(){
-       return view('about');  
-   }
+ 
+
 
 
     

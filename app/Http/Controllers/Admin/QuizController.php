@@ -7,15 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\Question;
 use App\Http\Requests\QuizCreateRequest;
-use App\Http\Requests\QuizUpdateRequest;
+use App\Http\Requests\QuizUpdateRequest; 
 
 class QuizController extends Controller
-
-
-
-
-
-
 {
     /**
      * Display a listing of the resource.

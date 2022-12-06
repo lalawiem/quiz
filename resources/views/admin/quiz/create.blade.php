@@ -1,11 +1,5 @@
-
-
 <x-app-layout>
-
-    <x-slot name="header">Quiz Oluştur </x-slot>
-
-
-
+    <x-slot name="header"><h4> Quiz Oluştur</h4> </x-slot>
 
     <div class="card container mt-3">
         <div class="card-body">
@@ -30,13 +24,7 @@
                 <div id="finishedInput" @if(!old('finished_at')) style="display: none;" @endif class="form-group mt-2">
                     <strong><label>Bitiş Tarihi: </label></strong>
                     <input type="datetime-local" name="finished_at" class="form-control" value="{{old('finished_at')}}">
-                </div>
-
-        
-
-
-
-
+                </div> 
 
                 <div class="form-group mt-3">
                     <button type="submit" class="btn btn-success btn-sm w-100">Quiz Oluştur</button>
@@ -44,6 +32,7 @@
             </form>
         </div>
     </div>
+
     <x-slot name="js">
         <script>
             $('#isFinished').change(function() 
@@ -57,8 +46,4 @@
             })
         </script>
     </x-slot>
-
-
-
-
 </x-app-layout>
