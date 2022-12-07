@@ -3,8 +3,10 @@
 
 <div class="card container mt-3">
     <div class="card-body">
+
         <form method="POST" action="{{route('duyurular.store')}}">  
         @csrf
+
             <div class="form-group mt-2">
             <strong><label>Duyuru Başlığı:</label></strong>
                 <input type="text" name="title" class="form-control" value="{{ old('title') }}">
@@ -31,7 +33,7 @@
         </form>
     </div>
 </div>
-
+ 
 <x-slot name="js">
     <script>
         $('#isFinished').change(function() 
