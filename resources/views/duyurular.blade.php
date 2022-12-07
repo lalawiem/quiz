@@ -3,17 +3,15 @@
     <div class="card container mt-3">
         <div class="card-body">
             <h5 class="card-title float-right">
-                <a href="{{route('dashboard')}}" class="btn btn-sm btn-secondary mt-1"><i class="fa fa-arrow-left"></i>Anasayfaya Dön</a>
+                <a href="{{route('dashboard')}}" class="btn btn-sm btn-secondary mr-1"><i class="fa fa-arrow-left mr-1"></i>Anasayfaya Dön</a>
                 @if (Auth()->user()->type=='admin')
 
 
-                <a href="{{route('duyurular.create')}}" class="btn btn-sm btn-primary mt-1"><i class="fa fa-plus"></i>Duyuru Ekle</a>
+                <a href="{{route('duyurular.create')}}" class="btn btn-sm btn-primary mr-1"><i class="fa fa-plus mr-1"></i>Duyuru Ekle</a>
                 @endif
             </h5>
         </div>
-        @foreach($duyurus as $title)
-        $duyurus->id
-        @endforeach
+     
 
         <table class="table table-bordered">
             <thead>

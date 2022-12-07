@@ -14,10 +14,9 @@
                     <img class="rounded text-align:center " src="{{ Auth::user()->profile_photo_url }}"
                             alt="{{ Auth::user()->name }}" />
                     <span class="inline-flex rounded-md mt-2">
-                        <button type="button"
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                        <span class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
                            <strong> {{ Auth::user()->name }} </strong>
-                        </button>
+                        </span>
                     </span>
 
             

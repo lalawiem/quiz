@@ -43,6 +43,7 @@ class DuyuruController extends Controller
      */
     public function store(DuyuruCreateRequest $request)
     {
+        $duyuru = $request->except('_token');
         Duyuru::create($request->post());
         return redirect()->route('duyuru.index')->withSuccess('Duyuru Başarıyla Oluşturuldu');
     }

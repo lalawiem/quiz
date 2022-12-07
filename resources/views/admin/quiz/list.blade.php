@@ -3,9 +3,9 @@
     <div class="card container mt-3">
         <div class="card-body">
             <h5 class="card-title float-right">
-                <a href="{{route('dashboard')}}" class="btn btn-sm btn-secondary mt-3"><i class="fa fa-arrow-left"></i>
+                <a href="{{route('dashboard')}}" class="btn btn-sm btn-secondary mt-3"><i class="fa fa-arrow-left mr-1"></i>
                     Anasayfaya Dön</a>
-                <a href="{{route('quizzes.create')}}" class="btn btn-sm btn-primary mt-3"><i class="fa fa-plus"></i>Quiz
+                <a href="{{route('quizzes.create')}}" class="btn btn-sm btn-primary mt-3"><i class="fa fa-plus mr-1"></i>Quiz
                     Oluştur</a>
             </h5>
 
