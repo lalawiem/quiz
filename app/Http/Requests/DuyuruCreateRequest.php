@@ -25,6 +25,7 @@ class DuyuruCreateRequest extends FormRequest
         return [
             'title'=>'required|min:3|max:200',
             'finished_at'=>'nullable|after:'.now()
+            
 
 
         ];
@@ -33,7 +34,7 @@ class DuyuruCreateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title'=>'Duyuru Başlığı',
+            'title'=>'Duyuru',
             'finished_at'=>'Bitiş Tarihi'
         ];
     }

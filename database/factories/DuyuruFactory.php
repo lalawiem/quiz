@@ -30,7 +30,7 @@ class DuyuruFactory extends Factory
         return [
             'title'=>$title,
             'user_id'=>rand(2,10),
+
         ];
     }
 }
-
