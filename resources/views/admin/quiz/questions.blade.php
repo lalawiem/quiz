@@ -1,13 +1,7 @@
 <x-app-layout>
 <x-slot name="header"> <h4> Sorular</h4></x-slot>
-
     <div class="card container mt-3">
         <div class="card-body">
-
-        
-
-     
-
             <h5 class="card-title float-right">
                 <a href="{{route('questions.create')}}" class="btn btn-sm btn-primary "><i
                         class="fa fa-plus"></i> Soru Oluştur</a>
@@ -22,25 +16,15 @@
                     <tr>
                         <th scope="col">Soru</th>
                         <th scope="col">Fotoğraf</th>
-                        <th scope="col">1. Cevap</th>
-                        <th scope="col">2. Cevap </th>
-                        <th scope="col">3. Cevap</th>
-                        <th scope="col">4. Cevap</th>
-                        <th scope="col">Doğru Cevap</th>
+                        <th scope="col">Cevap</th>
                         <th scope="col">İşlemler</th>
                         <th scope="col">Sil</th>
-
-                    
-
                     </tr>
                     @foreach( $questions as $question)
                     <tr>
                         <td> {{$question->question}}</td>
                         <td>{{$question->image}}</td>
-                        <td>{{$question->answer1}}</td>
-                        <td>{{$question->answer2}}</td>
-                        <td>{{$question->answer3}}</td>
-                        <td>{{$question->answer4}}</td>
+
                         <td class="text-success">{{substr($question->correct_answer,-1)}}. Cevap</td>
                         <td style="text-align: center"> <a href="{{route('questions.edit', $question->id)}}" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i></a> </td>
                         <td style="text-align: center">        
@@ -52,11 +36,7 @@
                         </td>
                     </tr>
                     @endforeach
-
-                    
-
                 </thead>
-
             </table>
         </div>
     </div>

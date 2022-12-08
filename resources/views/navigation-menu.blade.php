@@ -19,13 +19,6 @@
 
                     <x-jet-nav-link href="{{ route('duyurular.index') }}" :active="request()->routeIs('duyurular')">
                     <i class="fa-solid fa-bell mr-2"></i>   {{('Duyurular')}}
-
-
-
-                    
-
-
-
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -206,25 +199,34 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
 
-                <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
-                    :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
-                </x-jet-responsive-nav-link>
+                <x-slot name="content">
+                            @if (Auth()->user()->type=='admin')
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Admin İşlemleri') }}
+                            </div>
 
-                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}"
-                    :active="request()->routeIs('api-tokens.index')">
-                    {{ __('API Tokens') }}
-                </x-jet-responsive-nav-link>
-                @endif
+                            <x-jet-dropdown-link href="{{ route('quizzes.index') }}">
+                                {{ __('Quizler') }}
+                            </x-jet-dropdown-link>
 
+                            <x-jet-dropdown-link href="{{ route('questions.index') }}">
+                                {{ __('Sorular') }}
+                            </x-jet-dropdown-link>
+
+                            <x-jet-dropdown-link href="{{ route('duyurular.index') }}">
+                                {{ __('Duyurular') }}
+                            </x-jet-dropdown-link>
+                            @endif
+
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Hesap Ayarları') }}
+                            </div>
+
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profilim') }}
+                            </x-jet-dropdown-link>
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-
-                    <x-jet-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
-                    </x-jet-responsive-nav-link>
+            
                 </form>
 
                 <!-- Team Management -->

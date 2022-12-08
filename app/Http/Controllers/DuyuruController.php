@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Duyuru;
+use App\Models\Question;
 use App\Http\Requests\DuyuruCreateRequest;
 
 class DuyuruController extends Controller
@@ -19,7 +20,8 @@ class DuyuruController extends Controller
     
     public function index()
     {
-        return view('duyurular');
+        $duyurular = Duyuru::all();
+        return view('duyurular',compact('duyurular'));
 
     }
 
@@ -43,9 +45,15 @@ class DuyuruController extends Controller
      */
     public function store(DuyuruCreateRequest $request)
     {
-        $duyuru = $request->except('_token');
-        Duyuru::create($request->post());
-        return redirect()->route('duyuru.index')->withSuccess('Duyuru Başarıyla Oluşturuldu');
+        $user_id = auth()->user()->id;
+        Duyuru::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'finished_at' => $request->finished_at,
+            'user_id' => $user_id,
+        ]);
+        
+        return redirect()->route('duyurular.index')->withSuccess('Duyuru Başarıyla Oluşturuldu');
     }
 
     /**
