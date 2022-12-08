@@ -8,7 +8,7 @@ use App\Models\Quiz;
 use App\Models\Question;
 use App\Http\Requests\QuizCreateRequest;
 use App\Http\Requests\QuizUpdateRequest; 
-
+ 
 class QuizController extends Controller
 {
     /**

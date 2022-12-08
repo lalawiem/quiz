@@ -75,9 +75,9 @@
 
                         <td style="text-align: center">
                             <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button"
                                     id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false"> İşlemler
+                                    aria-expanded="false">İşlemler
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item" href="{{route('quizzes.show',$quiz->id)}}">Bilgi</a>
