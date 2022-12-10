@@ -8,13 +8,10 @@ use App\Http\Request\QuestionCreateRequest;
 
 class Question extends Model
 {
-    protected $fillable =['question', 'answer1', 'answer2', 'answer3', 'answer4', 'correct_answer','image','quiz_id',];
-
-
-
     protected $appends = ['true_percent'];
     use HasFactory;
 
+    protected $fillable =['question', 'answer1', 'answer2', 'answer3', 'answer4', 'correct_answer','image','quiz_id',];
 
    public function getTruePercentAttribute(){
     $answer_count = $this->answers()->count();

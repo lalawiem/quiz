@@ -17,8 +17,8 @@
                         <th scope="col">Soru</th>
                         <th scope="col">Fotoğraf</th>
                         <th scope="col">Cevap</th>
-                        <th scope="col">İşlemler</th>
-                        <th scope="col">Sil</th>
+                        <th scope="col" style="text-align: center">İşlemler</th>
+                        <th scope="col" style="text-align: center">Sil</th>
                     </tr>
                     @foreach( $questions as $question)
                     <tr>

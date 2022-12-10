@@ -5,7 +5,7 @@
     <div class="card container mt-3">
         <div class="card-body">
             <p class="card-text">
-            <div class="row container">
+            <div class="row ">
                 <div class="col-md-3" style="text-align:center">
                     <img class="rounded"  src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
 

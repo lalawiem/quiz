@@ -1,3 +1,5 @@
+<script src="js/slider-min.js" type="text/javascript">
+
 <x-app-layout>
     <x-slot name="header">{{$quiz->title}} Sonucu</x-slot>
     <div class="card container mt-3">
