@@ -73,8 +73,10 @@ class DuyuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
+        $duyuru = Duyuru::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
+        return view('duyuru_edit', compact('duyuru'));
       
 
     }
@@ -86,8 +88,14 @@ class DuyuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response 
      */
-    public function update()
+    public function update(DuyuruUpdateRequest $request,$id)
     {
+        
+        $duyuru = Duyuru::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
+        duyuru::find($id)->update($request->except(['_method','_token']));
+
+        return redirect()->route('duyurular.index')->withsuccess('Quiz Güncelleme İşlemi Başarıyla Gerçekleştirildi. ');
+
    
        
         
@@ -99,8 +107,10 @@ class DuyuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Duyuru $duyuru)
     {
+        $duyuru->delete();    
+        return redirect()->route('duyurular.index')->withSuccess('Duyuru Silme İşlemi Başarıyla Gerçekleştirildi.');
         
     }
 
