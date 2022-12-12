@@ -27,7 +27,7 @@ class QuizFactory extends Factory
         return [
             'title'=>$title,
             'slug'=>Str::slug($title),
-            'description'=> $this->faker->text(200), 
+            'description'=> $this->faker->text(500), 
 
 
         ];

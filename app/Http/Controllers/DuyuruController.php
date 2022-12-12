@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Duyuru;
 use App\Models\Question;
 use App\Http\Requests\DuyuruCreateRequest;
+use App\Http\Requests\DuyuruUpdateRequest;
+
 
 class DuyuruController extends Controller
 {
@@ -75,7 +77,7 @@ class DuyuruController extends Controller
      */
     public function edit($id)
     {
-        $duyuru = Duyuru::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
+        $duyuru = Duyuru::find($id) ?? abort(404,'Duyuru Bulunamadı') ; 
         return view('duyuru_edit', compact('duyuru'));
       
 
@@ -91,10 +93,10 @@ class DuyuruController extends Controller
     public function update(DuyuruUpdateRequest $request,$id)
     {
         
-        $duyuru = Duyuru::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
+        $duyuru = Duyuru::find($id) ?? abort(404,'Duyuru Bulunamadı') ; 
         duyuru::find($id)->update($request->except(['_method','_token']));
 
-        return redirect()->route('duyurular.index')->withsuccess('Quiz Güncelleme İşlemi Başarıyla Gerçekleştirildi. ');
+        return redirect()->route('duyurular.index')->withsuccess('Duyuru Güncelleme İşlemi Başarıyla Gerçekleştirildi. ');
 
    
        

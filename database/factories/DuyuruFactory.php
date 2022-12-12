@@ -27,11 +27,11 @@ class DuyuruFactory extends Factory
     public function definition()
     {
         $title = $this->faker->sentence(rand(3,7));
-        $description = $this->faker->sentence(rand(8,2));
         return [
             'title'=>$title,
             'user_id'=>rand(2,10),
-            'description'=>$description,
+            'description'=> $this->faker->text(500), 
+
 
 
         ];

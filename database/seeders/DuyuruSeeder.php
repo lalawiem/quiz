@@ -14,6 +14,6 @@ class DuyuruSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Duyuru::factory(10)->create();
+        \App\Models\Duyuru::factory(3)->create();
     }
 }

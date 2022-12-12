@@ -37,7 +37,6 @@
                         </li>
                         @endif
 
-
                         @if(count($quiz->topTen)> 0)
                         <div class="card mt-3">
                             <div class="card-body">
@@ -62,42 +61,7 @@
                 <div class="col-md-8">
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img class="d-block w-100"
-                                                src="/public/uploads/velit-ut-facere-reprehenderit-minima-natus-facilis-sit.jpg"
-                                                alt="First slide">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100"
-                                                src="/public/uploads/impedit-necessitatibus-unde-corporis-sint-impedit-accusamus.png"
-                                                alt="Second slide">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100"
-                                                src="/public/uploads/s88hac2fdf444b1f0a29f097683c1ad4d4ff2041ff17.jpeg"
-                                                alt="Third slide">
-                                        </div>
-                                    </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleFade" role="button"
-                                        data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carouselExampleFade" role="button"
-                                        data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
-
-
-                            </tr>
-
-
-
+                           
 
                             <tr>
                                 <th scope="col">Ad Soyad</th>

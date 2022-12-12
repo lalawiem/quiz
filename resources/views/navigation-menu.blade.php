@@ -4,9 +4,9 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard')}}">
-                        <img src="/public/uploads/voluptatem-qui-quo-consectetur-perferendis.jpg">
+                <div class=" flex items-center">
+                    <a href="{{route('dashboard')}}">
+                        <img src="/uploads/Adsiztasarim.png">
                     </a>
                 </div>
 
@@ -14,7 +14,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">  
                     <x-jet-nav-link href="{{ route('dashboard') }}"  :active="request()->routeIs('dashboard')">
-                    <i class="fa-solid fa-house mr-2"></i>  {{(' Anasayfa')}} 
+                    <i class="fa-solid fa-house mr-2"></i>  {{('Anasayfa')}} 
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('duyurular.index') }}" :active="request()->routeIs('duyurular')">

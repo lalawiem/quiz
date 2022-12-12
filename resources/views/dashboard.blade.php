@@ -1,19 +1,21 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h4>Anasayfa - Sonuçlar</h4>
-    </x-slot>
+    <x-slot name="header"> <h4>Anasayfa - Sonuçlar</h4> </x-slot>
     <div class="card container mt-3">
         <div class="card-body">
             <p class="card-text">
             <div class="row ">
                 <div class="col-md-3" style="text-align:center">
-                    <img class="rounded"  src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                <div align="center">
+                <img class="rounded" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                </div>
 
+                <div class="mt-3">
                     <span class="inline-flex rounded-md">
                         <span class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
                             <strong> {{ Auth::user()->name }} </strong>
                         </span>
                     </span>
+                    </div>
 
                     <div class="card mt-2">
                         <div class="card-header">
