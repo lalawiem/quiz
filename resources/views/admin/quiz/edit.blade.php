@@ -6,17 +6,17 @@
             <form method="POST" action="{{route('quizzes.update',$quiz->id)}}">
                 @csrf
                 @method('PUT')
-                <div class="form-group mt-2 ">
+                <div class="form-group mt-1 mb-2">
                     <strong><label>Quiz Başlığı:</label></strong>
-                    <input type="text" name="title" class="form-control " value="{{$quiz->title}}">
+                    <input type="text" name="title" class="form-control mt-1 " value="{{$quiz->title}}">
                 </div>
                 <div class="form-group mt-2">
                     <strong><label>Quiz Açıklaması:</label></strong>
-                    <textarea name="description" class="form-control " rows=4"> {{$quiz->description}}</textarea>
+                    <textarea name="description" class="form-control mt-1 " rows=4"> {{$quiz->description}}</textarea>
                 </div>
                 <div class="form-group mt-2">
                     <strong><label>Quiz Durumu:</label></strong>
-                    <select name="status" class="form-control ">
+                    <select name="status" class="form-control mt-1 ">
                         <option @if($quiz->questions_count<4) disabled @endif
                         @if($quiz->status==='publish') selected @endif value="publish">Aktif
                         </option>
@@ -25,7 +25,7 @@
 
                     </select>
                 </div>
-                <div class="form-group mt-2">
+                <div class="form-group mt-3">
                     <input id="isFinished" @if($quiz->finished_at) checked @endif type="checkbox">
                     <strong><label>Bitiş Tarihi Olacak mı? </label></strong>
                 </div>
@@ -33,7 +33,7 @@
                 <div id="finishedInput" @if(!$quiz->finished_at) style="display: none;" @endif class="form-group mt-2">
                     <strong><label>Bitiş Tarihi: </label></strong>
                     <input type="datetime-local" name="finished_at" value="{{ $quiz->finished_at}}"
-                        class="form-control">
+                        class="form-control mt-2">
                 </div>
 
                 <div class="form-group mt-3">

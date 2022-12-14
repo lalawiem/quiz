@@ -5,14 +5,13 @@
     </x-slot>
     <div class="card container mt-3">
         <div class="card-body">
-            <p class="card-text">
-            <h5 class="card-title">
+            <h5 class="card-title mb-3">
                 <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-left"></i>
                     Quizlere Dön</a>
             </h5>
 
             <div class="row">
-                <div class="col-md-4 mt-2">
+                <div class="col-md-4">
                     <ul class="list-group">
                         @if($quiz->finished_at)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -82,7 +81,6 @@
                         </tbody>
                     </table>
 
-                    </p>
                 </div>
             </div>
         </div>

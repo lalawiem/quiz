@@ -9,6 +9,7 @@ use App\Models\Question;
 use App\Http\Requests\QuestionCreateRequest;
 use App\Http\Requests\QuestionUpdateRequest;
 use Illuminate\Support\Str;
+
  
 
 class QuestionController extends Controller
@@ -23,7 +24,8 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view('admin.quiz.questions',compact('questions'));
+        $quizzes = Quiz::all();
+        return view('admin.quiz.questions',compact(['questions','quizzes']));
     }
 
     /** 
