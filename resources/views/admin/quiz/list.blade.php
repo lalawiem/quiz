@@ -5,14 +5,13 @@
     <div class="card container mt-3">
         <div class="card-body">
             <h5 class=" float-right mt-2">
-                <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#quiz">
-                    <i class="fa fa-plus mr-1"></i> Quiz ekle </button>
+                <button type="button" class="btn btn-outline-primary mb-1 " data-toggle="modal" data-target="#quiz">
+                    <i class="fa fa-plus mr-1"></i><strong> Quiz ekle </strong> </button>
             </h5>
-            <h5 class="card-title float-right mt-2">
-                <a href="{{route('dashboard')}}" class="btn btn-sm btn-secondary mr-1"><i
-                        class="fa fa-arrow-left mr-1"></i>Anasayfaya Dön</a>
+            <h5 class="card-title float-right mt-2 mr-1">
+                <a href="{{route('dashboard')}}" class="btn btn-outline-secondary mr-1"><i
+                        class="fa fa-arrow-left mr-1"></i><strong> Anasayfaya Dön </strong></a>
             </h5>
-
             <!-- Duyuru oluştur MODAL -->
             @foreach ($quizzes as $quiz)
             <tr>
@@ -83,7 +82,6 @@
                     @endforeach
                     <!-- --- -->
 
-
                     <form method="GET" action="">
                         <div class="row">
                             <div class="col-md-2 mt-1">
@@ -92,7 +90,7 @@
                             </div>
                             <div class="col-md-2 mt-1">
                                 <select class="form-control" onchange="this.form.submit()" name="status">
-                                    <option value="">Durum Seçiniz </option>
+                                    <option value="">Durum Seç </option>
                                     <option @if(request()->get('status')=='publish') selected @endif
                                         value="publish">Aktif
                                     </option>
@@ -113,7 +111,7 @@
                     <table class="table table-bordered mt-3">
                         <thead>
                             <tr>
-                                <th>Quiz</th>
+                                <th>Quiz Adı</th>
                                 <th style="text-align: center" scope="col">Soru Sayısı</th>
                                 <th style="text-align: center" scope="col">Durum</th>
                                 <th style="text-align: center" scope="col">Bitiş Tarihi</th>
@@ -171,13 +169,13 @@
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-danger"><i
-                                                class="fa fa-times"></i></button>
+                                                class="fa fa-times mt-1"></i></button>
                                     </form>
                                 </td>
-                </td>
-            </tr>
-            @endforeach
-            </tbody>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
             {{$quizzes->withQueryString()->links()}}
         </div>

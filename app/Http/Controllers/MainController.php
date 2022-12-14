@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\Answer;
 use App\Models\Result;
+use App\Models\Duyuru;
+
 
 
 class MainController extends Controller

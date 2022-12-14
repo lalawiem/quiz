@@ -5,30 +5,30 @@
     <div class="card container mt-3">
         <div class="card-body">
             <h5 class="card-title float-left">
-                <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary mr-1"><i
-                        class="fa fa-arrow-left mr-1"></i>Quizlere dön</a>
+                <a href="{{route('quizzes.index')}}" class="btn btn-outline-secondary mb-1"><i
+                        class="fa fa-arrow-left mr-2"></i><strong>Quizlere dön</strong></a>
             </h5>
 
-            <!-- Duyuru oluştur -->
             <h5 class=" float-right">
-                <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#question">
-                    <i class="fa fa-plus mr-1"></i> Soru ekle </button>
+                <button type="button" class="btn btn-outline-primary mb-1" data-toggle="modal" data-target="#question">
+                    <i class="fa fa-plus mr-1"></i><strong> Soru ekle </strong> </button>
             </h5>
             <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
-                        <th scope="col">Soru</th>
+                        <th scope="col">Soru Adı</th>
                         <th scope="col">Fotoğraf</th>
-                        <th scope="col">Cevap</th>
+                        <th scope="col" style="text-align: center">Doğru cevap</th>
                         <th scope="col" style="text-align: center">İşlemler</th>
                         <th scope="col" style="text-align: center">Sil</th>
+                    </tr>
                     </tr>
                     @foreach( $questions as $question)
                     <tr>
                         <td> {{$question->question}}</td>
                         <td>{{$question->image}}</td>
 
-                        <td class="text-success">{{substr($question->correct_answer,-1)}}. Cevap</td>
+                        <td class="text-success" style="text-align: center">{{substr($question->correct_answer,-1)}}. Cevap</td>
                         <td style="text-align: center"> <a href="{{route('questions.edit', $question->id)}}"
                                 class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i></a> </td>
                         <td style="text-align: center">
@@ -43,13 +43,14 @@
                 </thead>
             </table>
 
+            <!-- Soru oluştur -->
             @foreach ($questions as $question)
             <tr>
                 <td style="text-align: center">
                     <div class="modal fade" id="question" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <div class="modal-content">
+                            <div class="modal-content bs-modal-width: 100%;">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">
                                         <strong>{{$question->question}}</strong>
@@ -76,7 +77,7 @@
                         </div>
 
                         <div class=" row mt-3 col-md-auto">
-                            <div class="col-md-6">
+                            <div class="col-md-6 ">
                                 <div class="form-group">
                                     <strong><label> 1. Cevap:</label></strong>
                                     <textarea name="answer1" class="form-control"

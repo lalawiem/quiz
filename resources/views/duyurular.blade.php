@@ -4,18 +4,19 @@
     </x-slot>
     <div class="card container mt-3">
         <div class="card-body">
-            <h5 class="card-title float-left">
-                <a href="{{route('dashboard')}}" class="btn btn-sm btn-secondary mr-1"><i
-                        class="fa fa-arrow-left mr-1"></i>Anasayfaya Dön</a>
+            <h5 class="card-title float-left mb-3">
+                <a href="{{route('dashboard')}}" class="btn btn-outline-secondary"><i
+                        class="fa fa-arrow-left mr-1 mt-1"></i><strong> Anasayfaya Dön </strong></a>
             </h5>
 
             <!-- Duyuru oluştur -->
             @if (Auth()->user()->type=='admin')
-            <h5 class=" float-right">
-                <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal"
+            <h5 class=" float-right mb-3">
+                <button type="button" class="btn btn-outline-primary  " data-toggle="modal"
                     data-target="#olustur">
-                    <i class="fa fa-plus mr-1"></i> Duyuru ekle </button>
+                    <i class="fa fa-plus mr-1 mt-1"></i> <strong> Duyuru ekle </strong> </button>
             </h5>
+            
             @endif
             @foreach ($duyurular as $duyuru)
             <div class="modal fade" id="olustur" tabindex="-1" role="dialog"
@@ -56,7 +57,7 @@
             @endforeach
 
             <!-- Tablo -->
-            <table class="table table-bordered mt-5">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Duyuru Adı</th>

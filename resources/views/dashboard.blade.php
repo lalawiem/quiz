@@ -1,5 +1,6 @@
 <x-app-layout>
-    <x-slot name="header"> <h4>Anasayfa - Sonuçlar</h4> </x-slot>
+    <x-slot name="header"> <h4>Anasayfa - Sonuçlar</h4>   <form class="d-flex">
+     </x-slot> 
     <div class="card container mt-3">
         <div class="card-body">
             <p class="card-text">

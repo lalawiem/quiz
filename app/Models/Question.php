@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Request\QuestionCreateRequest;
+use App\Http\Request\QuestionUpdateRequest;
+
 
 class Question extends Model
 {
@@ -15,7 +17,7 @@ class Question extends Model
 
    public function getTruePercentAttribute(){
     $answer_count = $this->answers()->count();
-     $true_answer = $this->answers()->where('answer',$this->correct_answer)->count();
+    $true_answer = $this->answers()->where('answer',$this->correct_answer)->count();
 
     return round((100/$answer_count)*$true_answer); 
 

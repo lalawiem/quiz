@@ -36,7 +36,7 @@ class QuizController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function create()
     {
         return view('admin.quiz.create');
@@ -71,7 +71,8 @@ class QuizController extends Controller
     public function soruGor($id)
     {
         $questions = Quiz::find($id)->questions;
-        return view('admin.quiz.questions',compact('questions'));
+        $quizzes = Quiz::all();
+        return view('admin.quiz.questions',compact(['questions','quizzes']));
     }
 
     /**

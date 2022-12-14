@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\MainController;
+use  App\Http\Controllers\DuyuruController;
 use  App\Http\Controllers\Admin\QuizController;
 use  App\Http\Controllers\Admin\QuestionController;
-use  App\Http\Controllers\DuyuruController;
 
 
  
