@@ -8,6 +8,7 @@ use App\Http\Request\QuestionCreateRequest;
 use App\Http\Request\QuestionUpdateRequest;
 
 
+
 class Question extends Model
 {
     protected $appends = ['true_percent'];

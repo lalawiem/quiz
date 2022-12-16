@@ -6,17 +6,19 @@
         <div class="card-body">
             <h5 class="card-title float-left mb-3">
                 <a href="{{route('dashboard')}}" class="btn btn-outline-secondary"><i
-                        class="fa fa-arrow-left mr-1 mt-1"></i><strong> Anasayfaya Dön </strong></a>
+                        class="fa fa-arrow-left mr-1"></i><strong> Anasayfaya Dön </strong></a>
             </h5>
+
 
             <!-- Duyuru oluştur -->
             @if (Auth()->user()->type=='admin')
             <h5 class=" float-right mb-3">
-                <button type="button" class="btn btn-outline-primary  " data-toggle="modal"
+                <button type="button" class="btn btn-outline-primary " data-toggle="modal"
                     data-target="#olustur">
-                    <i class="fa fa-plus mr-1 mt-1"></i> <strong> Duyuru ekle </strong> </button>
+                    <i class="fa fa-plus mr-1"></i> <strong> Duyuru ekle </strong> </button>
             </h5>
-            
+
+         
             @endif
             @foreach ($duyurular as $duyuru)
             <div class="modal fade" id="olustur" tabindex="-1" role="dialog"
@@ -48,7 +50,7 @@
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>                            
-                        <button type="submit" class="btn btn-success">Duyuruyu Oluştur<i class="fa-solid fa-circle-check ml-1"></i></button>
+                        <button type="submit" class="btn btn-success">Duyuruyu Ekle<i class="fa-solid fa-circle-check ml-1"></i></button>
                         </div>
                         </form>
                     </div>
@@ -71,7 +73,7 @@
                 <tbody>
                     @foreach ($duyurular as $duyuru)
                     <tr>
-                        <td>{{$duyuru->title}}</td>
+                        <td><strong class="text-success"> [Okundu] </strong>{{$duyuru->title}}</td>
                         <td>{{$duyuru->created_at ? $duyuru->created_at->diffForHumans() : '-' }}</td>
                         <td style="text-align: center">
                             <button type="button" class="btn btn-success mb-1" data-toggle="modal"

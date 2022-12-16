@@ -1,35 +1,42 @@
-<script src="js/slider-min.js" type="text/javascript">
-
 <x-app-layout>
-    <x-slot name="header">{{$quiz->title}} Sonucu</x-slot>
-    <div class="card container mt-3">
-        <div class="card-body">
+    <x-slot name="header"> <h4>{{$quiz->title}}</h4> </x-slot>
+        <div class="card container mt-3">
+            <div class="card-body">
+                <div class= "float-left mt-1"> 
+                    <a href="{{route('dashboard')}}" class="btn btn-outline-secondary float-left">
+                        <i class="fa fa-arrow-left mr-1"></i> <strong> Anasayfaya Dön </strong>
+                    </a>
+                </div>
 
-            <div class= " container col-md-12 alert bg-light float-left">
-                <div class= "row align-items-center">
-                    <h4>Puan'ın: <strong>{{$quiz->my_result->point}}</strong> </h4>
+                <div class= "float-right mr-3 mt-1"> 
+                    @if($quiz->my_result)
+                        <h4> Aldığın puan: <span title="{{$quiz->finished_at}}">
+                            @if($quiz->my_result->point<'50') <span class="badge bg-danger badge-pill">
+                                {{$quiz->my_result->point}}</span>
+                            @else($quiz->my_result->point>'50') <span class="badge bg-success badge-pill">
+                                {{$quiz->my_result->point}}</span> 
+                            @endif
+                        </h4>    
+                    @endif
                 </div>
             </div>
 
-        
-
-
-
-
+            <div class="card-body">
             @foreach($quiz->questions as $question)
-            <strong>- </strong><small>Bu soruya <strong>%{{$question->true_percent}}</strong> oranında doğru cevap
-                verildi.</small>
+            <strong>- </strong><small>Bu soruya <strong>%{{$question->true_percent}}</strong> oranında doğru cevap verildi.</small>
             <br>
+            
+            <h5> 
+                @if($question->correct_answer == $question->my_answer->answer)
+                <i class="fa fa-check text-success"></i>
+                @else
+                <i class="fa fa-times text-danger"></i>
+                @endif
 
-            @if($question->correct_answer == $question->my_answer->answer)
-            <i class="fa fa-check text-success"></i>
-            @else
-            <i class="fa fa-times text-danger"></i>
+                <strong>{{$loop->iteration}}.</strong>
+                {{$question->question}}
+            </h5>
 
-            @endif
-            <strong>#{{$loop->iteration}}</strong>
-
-            {{$question->question}}
             @if($question->image)
             <img src="{{asset($question->image)}}" style="width: 50%" class="img-responsive">
             @endif

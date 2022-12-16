@@ -9,6 +9,7 @@ use App\Http\Requests\DuyuruCreateRequest;
 use App\Http\Requests\DuyuruUpdateRequest;
 
 
+
 class DuyuruController extends Controller
 {
 
@@ -21,7 +22,7 @@ class DuyuruController extends Controller
     
     public function index()
     {
-        $duyurular = Duyuru::all();
+        $duyurular = Duyuru::orderBy('created_at', 'desc')->get();
         return view('duyurular',compact('duyurular'));
 
     }
@@ -54,7 +55,7 @@ class DuyuruController extends Controller
             'user_id' => $user_id,
         ]);
         
-        return redirect()->route('duyurular.index')->withSuccess('Duyuru Başarıyla Oluşturuldu');
+        return redirect()->route('duyurular.index')->withSuccess('Duyuru başarıyla oluşturuldu.');
     }
 
     /**
@@ -76,7 +77,7 @@ class DuyuruController extends Controller
      */
     public function edit($id)
     {
-        $duyuru = Duyuru::find($id) ?? abort(404,'Duyuru Bulunamadı') ; 
+        $duyuru = Duyuru::find($id) ?? abort(404,'Duyuru bulunamadı') ; 
         return view('duyuru_edit', compact('duyuru'));
       
 
@@ -95,7 +96,7 @@ class DuyuruController extends Controller
         $duyuru = Duyuru::find($id) ?? abort(404,'Duyuru Bulunamadı') ; 
         duyuru::find($id)->update($request->except(['_method','_token']));
 
-        return redirect()->route('duyurular.index')->withsuccess('Duyuru Güncelleme İşlemi Başarıyla Gerçekleştirildi. ');
+        return redirect()->route('duyurular.index')->withsuccess('Duyuru güncelleme işlemi başarıyla Ggrçekleştirildi. ');
 
    
        
@@ -108,10 +109,11 @@ class DuyuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Duyuru $duyuru)
+    public function destroy($id)
     {
-        $duyuru->delete();    
-        return redirect()->route('duyurular.index')->withSuccess('Duyuru Silme İşlemi Başarıyla Gerçekleştirildi.');
+        Duyuru::find($id)->delete();
+
+        return redirect()->route('duyurular.index')->withSuccess('Duyuru silme işlemi başarıyla gerçekleştirildi.');
         
     }
 

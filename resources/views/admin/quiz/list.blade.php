@@ -1,12 +1,15 @@
 <x-app-layout>
+@include('sweetalert::alert')
     <x-slot name="header">
-        <h4> Quizler</h4>
+        <h4> Sınavlar</h4>
     </x-slot>
+    
+
     <div class="card container mt-3">
         <div class="card-body">
             <h5 class=" float-right mt-2">
                 <button type="button" class="btn btn-outline-primary mb-1 " data-toggle="modal" data-target="#quiz">
-                    <i class="fa fa-plus mr-1"></i><strong> Quiz ekle </strong> </button>
+                    <i class="fa fa-plus mr-1"></i><strong> Sınav ekle </strong> </button>
             </h5>
             <h5 class="card-title float-right mt-2 mr-1">
                 <a href="{{route('dashboard')}}" class="btn btn-outline-secondary mr-1"><i
@@ -33,13 +36,13 @@
                                         <form method="POST" action="{{route('quizzes.store')}}">
                                             @csrf
                                             <div class="form-group mt-2">
-                                                <strong><label>Quiz Başlığı:</label></strong>
+                                                <strong><label>Sınav Başlığı:</label></strong>
                                                 <input type="text" name="title" class="form-control"
                                                     value="{{ old('title') }}">
                                             </div>
 
                                             <div class="form-group mt-2">
-                                                <strong><label>Quiz Açıklaması:</label></strong>
+                                                <strong><label>Sınav Açıklaması:</label></strong>
                                                 <textarea name="description" class="form-control"
                                                     rows=4">{{ old('description') }}</textarea>
                                             </div>
@@ -51,7 +54,7 @@
                                             </div>
 
                                             <div id="finishedInput" @if(!old('finished_at')) style="display: none;"
-                                                @endif class="form-group mt-2">
+                                                @endif class="form-group mt-3">
                                                 <strong><label>Bitiş Tarihi: </label></strong>
                                                 <input type="datetime-local" name="finished_at" class="form-control"
                                                     value="{{old('finished_at')}}">
@@ -72,7 +75,7 @@
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat </button>
-                                    <button type="submit" class="btn btn-success"> Oluştur <i
+                                    <button type="submit" class="btn btn-success"> Sınavı oluştur <i
                                             class="fa-solid fa-circle-check ml-1"></i></button>
                                 </div>
                                 </form>
@@ -86,7 +89,7 @@
                         <div class="row">
                             <div class="col-md-2 mt-1">
                                 <input type="text" name="title" value="{{request()->get('title')}}"
-                                    placeholder="Quiz Adı" class="form-control"> </input>
+                                    placeholder="Sınav Adı" class="form-control"> </input>
                             </div>
                             <div class="col-md-2 mt-1">
                                 <select class="form-control" onchange="this.form.submit()" name="status">
@@ -111,7 +114,7 @@
                     <table class="table table-bordered mt-3">
                         <thead>
                             <tr>
-                                <th>Quiz Adı</th>
+                                <th>Sınav Adı</th>
                                 <th style="text-align: center" scope="col">Soru Sayısı</th>
                                 <th style="text-align: center" scope="col">Durum</th>
                                 <th style="text-align: center" scope="col">Bitiş Tarihi</th>

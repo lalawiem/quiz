@@ -131,10 +131,10 @@
                         </p>
                         
                         @if($quiz->my_result)
-                        <a href="{{route('quiz.join',$quiz->slug)}}" class="btn btn-warning btn-sm w-100">Quiz'i
+                        <a href="{{route('quiz.join',$quiz->slug)}}" class="btn btn-warning btn-sm w-100">Sınav'ı
                             Görüntüle</a>
                         @elseif($quiz->finished_at>now())
-                        <a href="{{route('quiz.join',$quiz->slug)}}" class="btn btn-primary btn-sm w-100">Quize
+                        <a href="{{route('quiz.join',$quiz->slug)}}" class="btn btn-primary btn-sm w-100">Sınava
                             Katıl</a>
                         @endif
                     </div>

@@ -7,7 +7,7 @@
         <div class="card-body">
             <h5 class="card-title mb-3">
                 <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-left"></i>
-                    Quizlere Dön</a>
+                    Sınavlara Dön</a>
             </h5>
 
             <div class="row">
@@ -60,8 +60,6 @@
                 <div class="col-md-8">
                     <table class="table table-bordered">
                         <thead>
-                           
-
                             <tr>
                                 <th scope="col">Ad Soyad</th>
                                 <th scope="col">Puan</th>

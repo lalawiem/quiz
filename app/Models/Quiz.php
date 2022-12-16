@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Quiz extends Model
 {
-    use HasFactory;
+    use HasFactory ;
     use Sluggable;
 
     protected $fillable=['title', 'description', 'status', 'finished_at','slug'];

@@ -52,7 +52,7 @@ class QuizController extends Controller
     public function store(QuizCreateRequest $request)
     {
         Quiz::create($request->post());
-        return redirect()->route('quizzes.index')->withSuccess('Quiz Başarıyla Oluşturuldu ');
+        return redirect()->route('quizzes.index')->withSuccess('Sınav başarıyla oluşturuldu.');
     }
 
     /**
@@ -64,7 +64,7 @@ class QuizController extends Controller
     public function show($id)
     {
         $questions = Quiz::find($id)->questions;
-        $quiz = Quiz::with('topTen.user','results.user')->withCount('questions')->find($id) ?? abort(404, 'Quiz bulunamadı');
+        $quiz = Quiz::with('topTen.user','results.user')->withCount('questions')->find($id) ?? abort(404, 'Sınav bulunamadı.');
         return view('admin.quiz.show',compact(['quiz','questions']));
 
     }
@@ -83,7 +83,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        $quiz = Quiz::withCount('questions')->find($id) ?? abort(404,'Quiz Bulunamadı') ; 
+        $quiz = Quiz::withCount('questions')->find($id) ?? abort(404,'Sınav Bulunamadı.') ; 
         return view('admin.quiz.edit', compact('quiz'));
 
     }
@@ -101,7 +101,7 @@ class QuizController extends Controller
         $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
         Quiz::find($id)->update($request->except(['_method','_token']));
 
-        return redirect()->route('quizzes.index')->withsuccess('Quiz Güncelleme İşlemi Başarıyla Gerçekleştirildi. ');
+        return redirect()->route('quizzes.index')->withsuccess('Sınav güncelleme işlemi başarıyla gerçekleştirildi. ');
         
     }
 
@@ -114,7 +114,7 @@ class QuizController extends Controller
     public function destroy(Quiz $quiz)
     {
         $quiz->delete();    
-        return redirect()->route('quizzes.index')->withSuccess('Quiz Silme İşlemi Başarıyla Gerçekleştirildi.');
+        return redirect()->route('quizzes.index')->withSuccess('Sınav silme işlemi başarıyla gerçekleştirildi.');
     }
 
     

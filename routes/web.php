@@ -5,6 +5,7 @@ use  App\Http\Controllers\MainController;
 use  App\Http\Controllers\DuyuruController;
 use  App\Http\Controllers\Admin\QuizController;
 use  App\Http\Controllers\Admin\QuestionController;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
  
