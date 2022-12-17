@@ -6,7 +6,7 @@
         <div class="card-body">
             <h5 class="card-title float-left mb-3">
                 <a href="{{route('dashboard')}}" class="btn btn-outline-secondary"><i
-                        class="fa fa-arrow-left mr-1"></i><strong> Anasayfaya Dön </strong></a>
+                        class="fa fa-arrow-left mr-1"></i><strong> Geri Dön </strong></a>
             </h5>
 
 
@@ -18,7 +18,7 @@
                     <i class="fa fa-plus mr-1"></i> <strong> Duyuru ekle </strong> </button>
             </h5>
 
-         
+        
             @endif
             @foreach ($duyurular as $duyuru)
             <div class="modal fade" id="olustur" tabindex="-1" role="dialog"
@@ -63,7 +63,6 @@
                 <thead>
                     <tr>
                         <th scope="col">Duyuru Adı</th>
-                        <th> Tarih </th>
                         <th style="text-align: center"> Detay </th>
                         @if (Auth()->user()->type=='admin')
                         <th style="text-align: center"> İşlemler </th>
@@ -74,7 +73,6 @@
                     @foreach ($duyurular as $duyuru)
                     <tr>
                         <td><strong class="text-success"> [Okundu] </strong>{{$duyuru->title}}</td>
-                        <td>{{$duyuru->created_at ? $duyuru->created_at->diffForHumans() : '-' }}</td>
                         <td style="text-align: center">
                             <button type="button" class="btn btn-success mb-1" data-toggle="modal"
                                 data-target="#duyuru{{ $loop->index }}">

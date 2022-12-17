@@ -17,7 +17,6 @@
                 <thead>
                     <tr>
                         <th scope="col">Soru Adı</th>
-                        <th scope="col">Fotoğraf</th>
                         <th scope="col" style="text-align: center">Doğru cevap</th>
                         <th scope="col" style="text-align: center">İşlemler</th>
                         <th scope="col" style="text-align: center">Sil</th>
@@ -25,9 +24,8 @@
                     @foreach( $questions as $question)
                     <tr>
                         <td> {{$question->question}}</td>
-                        <td>{{$question->image}}</td>
                         <td class="text-success" style="text-align: center">
-                            {{substr($question->correct_answer,-1)}}.Cevap</td>
+                            {{substr($question->correct_answer,-1)}}. Cevap</td>
 
                         <!-- Edit modal -->
                         <td style="text-align: center">
@@ -56,7 +54,7 @@
 
                                                 @csrf
                                                 @method('PUT')
-                                                <div class="form-group mt-2">
+                                                <div class="form-group mt-2 w-0">
                                                     <strong> <label> Soru:</label> </strong>
                                                     <textarea name="question" class="form-control"
                                                         rows=4">{{ $question->question }}</textarea>
@@ -182,7 +180,7 @@
                         <div class="row mt-2">
                             <div class="col-md-6 form-group mt-1">
                                 <strong><label>Fotoğraf:</label></strong>
-                                <input type="file" name="image" class="form-control w-auto">
+                                <input type="file" name="image" class="form-control">
                             </div>
                         </div>
 
@@ -191,7 +189,7 @@
                                 <div class="form-group">
                                     <strong><label> 1. Cevap:</label></strong>
                                     <textarea name="answer1" class="form-control"
-                                        rows=3">{{ old('answer1') }}</textarea>
+                                        rows=2">{{ old('answer1') }}</textarea>
                                 </div>
                             </div>
 
@@ -199,7 +197,7 @@
                                 <div class="form-group">
                                     <strong><label> 2. Cevap:</label></strong>
                                     <textarea name="answer2" class="form-control"
-                                        rows=3">{{ old('answer2') }}</textarea>
+                                        rows=2">{{ old('answer2') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +207,7 @@
                                 <div class="form-group">
                                     <strong><label> 3 Cevap:</label></strong>
                                     <textarea name="answer3" class="form-control"
-                                        rows=3">{{ old('answer3') }}</textarea>
+                                        rows=2">{{ old('answer3') }}</textarea>
                                 </div>
                             </div>
 
@@ -217,7 +215,7 @@
                                 <div class="form-group">
                                     <strong><label> 4. Cevap:</label></strong>
                                     <textarea name="answer4" class="form-control"
-                                        rows=3">{{ old('answer4') }}</textarea>
+                                        rows=2">{{ old('answer4') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -235,9 +233,9 @@
                                 </option>
                             </select>
                         </div>
-                        <div class='row-cols-md-1 mt-3'>
+                        <div class="mt-3">
                             <strong><label>Sınav Seç:</label></strong> <br>
-                            <select name="quiz_id">
+                            <select name="quiz_id" class="w-100">
                                 <option>...</option>
                                 @foreach($quizzes as $quiz)
                                 <option value="{{$quiz->id}}">{{$quiz->id}}-{{$quiz->title}}</option>

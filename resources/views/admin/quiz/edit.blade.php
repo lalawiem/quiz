@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-slot name="header"><h4>Sınav'ı düzenle</h4> </x-slot>
+    <x-slot name="header"><h4>Sınavı düzenle</h4> </x-slot>
     <div class="card container mt-3">
         <div class="card-body ">
             <form method="POST" action="{{route('quizzes.update',$quiz->id)}}">
@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group mt-2">
                     <strong><label>Sınav Açıklaması:</label></strong>
-                    <textarea name="description" class="form-control " rows=4"> {{$quiz->description}}</textarea>
+                    <textarea name="description" class="form-control " rows=8"> {{$quiz->description}}</textarea>
                 </div>
                 <div class="form-group mt-2">
                     <strong><label>Sınav Durumu:</label></strong>

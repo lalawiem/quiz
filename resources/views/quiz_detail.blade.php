@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h4>{{$quiz->title}}</h4>
     </x-slot>
-    <div class="card container mt-3">
+    <div class="card container mt-2">
         <div class="card-body">
             <p class="card-text">
             <div class="row">
@@ -63,7 +63,7 @@
                     </ul>
 
                     @if(count($quiz->topTen)> 0)
-                    <div class="card mt-3">
+                    <div class="card mt-3 mb-3">
                         <div class="card-body">
                             <h5 class="card-title ml-2"> En Yüksek Puanlar:</h5>
                             <ul class="list-group">

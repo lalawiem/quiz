@@ -18,7 +18,7 @@
                     </span>
                     </div>
 
-                    <div class="card mt-2">
+                    <div class="card mt-2 mb-2">
                         <div class="card-header">
                             <strong>Sınav Sonuçları</strong>
                         </div>

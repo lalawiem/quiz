@@ -1,20 +1,26 @@
 <x-app-layout>
-@include('sweetalert::alert')
+    @include('sweetalert::alert')
     <x-slot name="header">
         <h4> Sınavlar</h4>
     </x-slot>
-    
 
-    <div class="card container mt-3">
+
+    <div class="card container mt-2">
         <div class="card-body">
+            <div class=" float-right">
             <h5 class=" float-right mt-2">
-                <button type="button" class="btn btn-outline-primary mb-1 " data-toggle="modal" data-target="#quiz">
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#quiz">
                     <i class="fa fa-plus mr-1"></i><strong> Sınav ekle </strong> </button>
             </h5>
-            <h5 class="card-title float-right mt-2 mr-1">
+            
+            <h5 class="float-right mt-2">
                 <a href="{{route('dashboard')}}" class="btn btn-outline-secondary mr-1"><i
-                        class="fa fa-arrow-left mr-1"></i><strong> Anasayfaya Dön </strong></a>
+                        class="fa fa-arrow-left mr-1"></i><strong> Geriye dön </strong></a>
             </h5>
+            </div>
+
+            
+            
             <!-- Duyuru oluştur MODAL -->
             @foreach ($quizzes as $quiz)
             <tr>
@@ -91,6 +97,14 @@
                                 <input type="text" name="title" value="{{request()->get('title')}}"
                                     placeholder="Sınav Adı" class="form-control"> </input>
                             </div>
+                            @if(request()->get('title') || request()->get('status'))
+                            <div class="col-md-2 mt-1">
+                                <a href="{{route('quizzes.index')}}" class="btn btn-secondary">Sıfırla</a>
+                            </div>
+                            @endif
+                        </div>
+                        <div class="row">
+
                             <div class="col-md-2 mt-1">
                                 <select class="form-control" onchange="this.form.submit()" name="status">
                                     <option value="">Durum Seç </option>
@@ -104,29 +118,20 @@
                                     </option>
                                 </select>
                             </div>
-                            @if(request()->get('title') || request()->get('status'))
-                            <div class="col-md-2 mt-1">
-                                <a href="{{route('quizzes.index')}}" class="btn btn-secondary">Sıfırla</a>
-                            </div>
-                            @endif
                         </div>
                     </form>
                     <table class="table table-bordered mt-3">
                         <thead>
                             <tr>
                                 <th>Sınav Adı</th>
-                                <th style="text-align: center" scope="col">Soru Sayısı</th>
                                 <th style="text-align: center" scope="col">Durum</th>
-                                <th style="text-align: center" scope="col">Bitiş Tarihi</th>
                                 <th style="text-align: center" scope="col">İşlemler</th>
-                                <th style="text-align: center" scope="col">Sil</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($quizzes as $quiz)
                             <tr>
-                                <td> {{ $quiz->title }}</td>
-                                <td style="text-align: center">{{ $quiz->questions_count }}</td>
+                                <td><strong> {{ $quiz->title }}</strong></td>
                                 <td style="text-align: center">
                                     @switch($quiz->status)
                                     @case('publish')
@@ -148,15 +153,21 @@
                                     @break
                                     @endswitch
                                 </td>
-                                <td style="text-align: center">
-                                    {{$quiz->finished_at ? $quiz->finished_at->diffForHumans() : '-' }}</td>
+
 
                                 <td style="text-align: center">
                                     <div class="dropdown">
-                                        <a class="btn btn-primary dropdown-toggle" href="#" role="button"
+                                        <a class="btn btn-primary dropdown-toggle mb-1" href="#" role="button"
                                             id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">İşlemler
                                         </a>
+
+                                        <form method="POST" action="{{route('quizzes.destroy',[$quiz->id])}}">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Sınavı sil</button>
+                                        </form>
+
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item"
                                                 href="{{route('quizzes.show',$quiz->id)}}">Bilgi</a>
@@ -166,21 +177,12 @@
                                             </a>
                                         </div>
                                     </div>
-
-                                <td style="text-align: center">
-                                    <form method="POST" action="{{route('quizzes.destroy',[$quiz->id])}}">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-sm btn-danger"><i
-                                                class="fa fa-times mt-1"></i></button>
-                                    </form>
                                 </td>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {{$quizzes->withQueryString()->links()}}
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{$quizzes->withQueryString()->links()}}
         </div>
     </div>
 </x-app-layout>

@@ -37,7 +37,7 @@
                         @endif
 
                         @if(count($quiz->topTen)> 0)
-                        <div class="card mt-3">
+                        <div class="card mt-3 mb-2">
                             <div class="card-body">
                                 <h5 class="card-title">İlk 10</h5>
                                 <ul class="list-group">
