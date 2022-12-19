@@ -162,9 +162,20 @@
             </div>
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
+            <div class="mr-2 flex items-center sm:hidden m-auto">
+
+            <x-jet-dropdown-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="text-left">
+                {{ __('Ana Sayfa') }}
+            </x-jet-dropdown-link>
+
+            <x-jet-dropdown-link href="{{ route('duyurular.index') }}" :active="request()->routeIs('dashboard')">
+                {{ __('Duyurular') }}
+            </x-jet-dropdown-link>
+            </div>
+
+        <div class="pt-2 pb-2 mt-1 space-y-1 text-center">
                 <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
+                    class="inline-flex items-rihgt justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -177,22 +188,21 @@
         </div>
     </div>
 
+
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Ana Sayfa') }}
-            </x-jet-responsive-nav-link>
-        </div>
+        
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-3 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                 <div class="shrink-0 mr-3">
-                    <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
-                        alt="{{ Auth::user()->name }}" />
+                    <a href="{{ route('profile.show') }}">
+                        <img class="h-20 w-20 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
+                            alt="{{ Auth::user()->name }}" /> </a>
                 </div>
+                
                 @endif
 
                 <div>
@@ -210,11 +220,8 @@
 
 
                     <div class="block px-4 py-2 text-xs text-gray-400">
-
                         {{ __('Admin İşlemleri') }}
-
                     </div>
-
 
                     <x-jet-dropdown-link href="{{ route('quizzes.index') }}">
                         {{ __('Sınavlar') }}
@@ -230,12 +237,11 @@
                     @endif
 
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Hesap Ayarları') }}
+
                     </div>
 
-                    <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                        {{ __('Profilim') }}
-                    </x-jet-dropdown-link>
+
+
                     <!-- Authentication -->
 
                     </form>

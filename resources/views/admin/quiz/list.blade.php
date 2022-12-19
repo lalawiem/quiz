@@ -3,29 +3,23 @@
     <x-slot name="header">
         <h4> Sınavlar</h4>
     </x-slot>
-
-
     <div class="card container mt-2">
         <div class="card-body">
-            <div class=" float-right">
-            <h5 class=" float-right mt-2">
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#quiz">
+            <h5 class=" float-right mt-1 ">
+                <button type="button" class="btn btn-outline-primary mb-1" data-toggle="modal" data-target="#quiz">
                     <i class="fa fa-plus mr-1"></i><strong> Sınav ekle </strong> </button>
             </h5>
-            
-            <h5 class="float-right mt-2">
-                <a href="{{route('dashboard')}}" class="btn btn-outline-secondary mr-1"><i
+
+            <h5 class="float-left mt-1">
+                <a href="{{route('dashboard')}}" class="btn btn-outline-secondary mr-1 mb-1"><i
                         class="fa fa-arrow-left mr-1"></i><strong> Geriye dön </strong></a>
             </h5>
-            </div>
 
-            
-            
             <!-- Duyuru oluştur MODAL -->
             @foreach ($quizzes as $quiz)
             <tr>
                 <td style="text-align: center">
-                    <div class="modal fade" id="quiz" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade mt-5" id="quiz" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -92,95 +86,94 @@
                     <!-- --- -->
 
                     <form method="GET" action="">
-                        <div class="row">
-                            <div class="col-md-2 mt-1">
-                                <input type="text" name="title" value="{{request()->get('title')}}"
-                                    placeholder="Sınav Adı" class="form-control"> </input>
-                            </div>
-                            @if(request()->get('title') || request()->get('status'))
-                            <div class="col-md-2 mt-1">
-                                <a href="{{route('quizzes.index')}}" class="btn btn-secondary">Sıfırla</a>
-                            </div>
-                            @endif
+                        <div class="col-md-12 mt-1">
+                            <input type="text" name="title" value="{{request()->get('title')}}" placeholder="Sınav Adı"
+                                class="form-control"> </input>
                         </div>
-                        <div class="row">
 
-                            <div class="col-md-2 mt-1">
-                                <select class="form-control" onchange="this.form.submit()" name="status">
-                                    <option value="">Durum Seç </option>
-                                    <option @if(request()->get('status')=='publish') selected @endif
-                                        value="publish">Aktif
-                                    </option>
-                                    <option @if(request()->get('status')=='passive') selected @endif
-                                        value="passive">Pasif
-                                    </option>
-                                    <option @if(request()->get('status')=='draft') selected @endif value="draft">Taslak
-                                    </option>
-                                </select>
-                            </div>
+                        <div class="col-md-12 mt-2 ">
+                            <select class="form-control" onchange="this.form.submit()" name="status">
+                                <option value="">Durum Seç </option>
+                                <option @if(request()->get('status')=='publish') selected @endif
+                                    value="publish">Aktif
+                                </option>
+                                <option @if(request()->get('status')=='passive') selected @endif
+                                    value="passive">Pasif
+                                </option>
+                                <option @if(request()->get('status')=='draft') selected @endif value="draft">Taslak
+                                </option>
+                            </select>
                         </div>
+
+                        @if(request()->get('title') || request()->get('status'))
+                        <div class="col-md-12 mt-2">
+                            <a href="{{route('quizzes.index')}}" class="btn btn-secondary w-full">Sıfırla</a>
+                        </div>
+                        @endif
                     </form>
-                    <table class="table table-bordered mt-3">
-                        <thead>
+                    <table class="table table-bordered mt-3 mb-3">
+                        <thead">
                             <tr>
                                 <th>Sınav Adı</th>
                                 <th style="text-align: center" scope="col">Durum</th>
                                 <th style="text-align: center" scope="col">İşlemler</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($quizzes as $quiz)
-                            <tr>
-                                <td><strong> {{ $quiz->title }}</strong></td>
-                                <td style="text-align: center">
-                                    @switch($quiz->status)
-                                    @case('publish')
-                                    @if(!$quiz->finished_at)
-                                    <span class="badge bg-success">AKTİF</span>
-                                    @elseif($quiz->finished_at>now())
-                                    <span class="badge bg-success">AKTİF</span>
-                                    @else
-                                    <span class="badge bg-secondary">Süresi Doldu</span>
-                                    @endif
-                                    @break
+                            <tbody>
+                                @foreach($quizzes as $quiz)
+                                <tr>
+                                    <td><strong> {{ $quiz->title }}</strong></td>
+                                    <td style="text-align: center">
+                                        @switch($quiz->status)
+                                        @case('publish')
+                                        @if(!$quiz->finished_at)
+                                        <span class="badge bg-success">AKTİF</span>
+                                        @elseif($quiz->finished_at>now())
+                                        <span class="badge bg-success">AKTİF</span>
+                                        @else
+                                        <span class="badge bg-secondary">Süresi Doldu</span>
+                                        @endif
+                                        @break
 
-                                    @case('passive')
-                                    <span class="badge bg-danger">Pasif</span>
-                                    @break
+                                        @case('passive')
+                                        <span class="badge bg-danger">Pasif</span>
+                                        @break
 
-                                    @case('draft')
-                                    <span class="badge bg-warning text-black">Taslak</span>
-                                    @break
-                                    @endswitch
-                                </td>
+                                        @case('draft')
+                                        <span class="badge bg-warning text-black">Taslak</span>
+                                        @break
+                                        @endswitch
+                                    </td>
 
 
-                                <td style="text-align: center">
-                                    <div class="dropdown">
-                                        <a class="btn btn-primary dropdown-toggle mb-1" href="#" role="button"
-                                            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">İşlemler
-                                        </a>
-
-                                        <form method="POST" action="{{route('quizzes.destroy',[$quiz->id])}}">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger">Sınavı sil</button>
-                                        </form>
-
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item"
-                                                href="{{route('quizzes.show',$quiz->id)}}">Bilgi</a>
-                                            <a class="dropdown-item" href="{{route('quizzes.soruGor', $quiz->id)}}">
-                                                Sorular</a>
-                                            <a class="dropdown-item" href="{{route('quizzes.edit', $quiz->id)}}">Düzenle
+                                    <td style="text-align: center">
+                                        <div class="dropdown">
+                                            <a class="btn btn-primary dropdown-toggle mb-1" href="#" role="button"
+                                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">İşlemler
                                             </a>
+
+                                            <form method="POST" action="{{route('quizzes.destroy',[$quiz->id])}}">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger">Sınavı sil</button>
+                                            </form>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class="dropdown-item"
+                                                    href="{{route('quizzes.show',$quiz->id)}}">Bilgi</a>
+                                                <a class="dropdown-item" href="{{route('quizzes.soruGor', $quiz->id)}}">
+                                                    Sorular</a>
+                                                <a class="dropdown-item"
+                                                    href="{{route('quizzes.edit', $quiz->id)}}">Düzenle
+                                                </a>
+
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                            </thead>
                     </table>
                     {{$quizzes->withQueryString()->links()}}
         </div>

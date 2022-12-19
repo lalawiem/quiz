@@ -60,7 +60,7 @@ class QuestionController extends Controller
             ]);
         }
         Question::create($request->post());
-        return redirect()->route('questions.index')->withSuccess('Soru başarıyla oluşturuldu');
+        return redirect()->route('questions.index')->withSuccess('Soru başarıyla oluşturuldu.');
     }
 
     /**
@@ -92,7 +92,7 @@ class QuestionController extends Controller
             ]);
         }
        
-        return redirect()->route('questions.index')->withSuccess('Soru başarıyla güncellendi');
+        return redirect()->route('questions.index')->withSuccess('Soru başarıyla güncellendi.');
     }
     /**
      * Remove the specified resource from storage.

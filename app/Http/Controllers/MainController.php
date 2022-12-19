@@ -26,7 +26,7 @@ class MainController extends Controller
 
     
     public function quiz($slug){
-        $quiz = Quiz::whereSlug($slug)->with('questions.my_answer','my_result')->first() ?? abort(404, 'Quiz bulunamadı');
+        $quiz = Quiz::whereSlug($slug)->with('questions.my_answer','my_result')->first() ?? abort(404, 'Sınav bulunamadı');
         if($quiz->my_result){
             return view('quiz_result', compact('quiz'));
         }
@@ -35,16 +35,16 @@ class MainController extends Controller
     }
 
     public function quiz_detail($slug){
-        $quiz = Quiz::whereSlug($slug)->with('my_result','topTen.user')->withCount('questions')->first() ?? abort(404, 'Quiz bulunamadı');
+        $quiz = Quiz::whereSlug($slug)->with('my_result','topTen.user')->withCount('questions')->first() ?? abort(404, 'Sınav bulunamadı');
         return view('quiz_detail', compact('quiz'));
     }
 
     public function result(Request $request, $slug){
-        $quiz = Quiz::with('questions')->whereSlug($slug)->first() ?? abort(404, 'Quiz bulunamadı');
+        $quiz = Quiz::with('questions')->whereSlug($slug)->first() ?? abort(404, 'Sınav bulunamadı');
         $correct = 0;
 
         if($quiz->my_result){
-            abort(404,"Bu Quiz'e daha önce katıldınız.");
+            abort(404,"Bu Sınav'a daha önce katıldınız.");
             // return redirect()->route('dashboard')->with
         }
 
@@ -75,7 +75,7 @@ class MainController extends Controller
             'wrong'=>$wrong,
            
         ]);
-        return redirect()->route('quiz_detail', $quiz->slug)->withSuccess("Başarıyla Quiz'i Bitirdin Puanın : ".$point);
+        return redirect()->route('quiz_detail', $quiz->slug)->withSuccess("Sınavı başarıyla bitirdin. Puanın: ".$point);
     }
 
     public function quizshow(Quiz $quiz)

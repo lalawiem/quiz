@@ -98,10 +98,10 @@ class QuizController extends Controller
     public function update(QuizUpdateRequest $request,$id)
     {
    
-        $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı') ; 
+        $quiz = Quiz::find($id) ?? abort(404,'Sınav Bulunamadı') ; 
         Quiz::find($id)->update($request->except(['_method','_token']));
 
-        return redirect()->route('quizzes.index')->withsuccess('Sınav güncelleme işlemi başarıyla gerçekleştirildi. ');
+        return redirect()->route('quizzes.index')->withsuccess('Sınav başarıyla güncellendi.');
         
     }
 
@@ -114,7 +114,7 @@ class QuizController extends Controller
     public function destroy(Quiz $quiz)
     {
         $quiz->delete();    
-        return redirect()->route('quizzes.index')->withSuccess('Sınav silme işlemi başarıyla gerçekleştirildi.');
+        return redirect()->route('quizzes.index')->withSuccess('Sınav başarıyla silindi.');
     }
 
     

@@ -3,6 +3,13 @@
     <x-slot name="header"><h4>Sınavı düzenle</h4> </x-slot>
     <div class="card container mt-3">
         <div class="card-body ">
+        <div class="row mb-2">
+        <h5 class="card-title float-left">
+                <a href="{{route('quizzes.index')}}" class="btn btn-outline-secondary"><i
+                        class="fa fa-arrow-left mr-1"></i><strong> Geriye dön </strong></a>
+            </h5>
+        </div>
+
             <form method="POST" action="{{route('quizzes.update',$quiz->id)}}">
                 @csrf
                 @method('PUT')
@@ -12,7 +19,7 @@
                 </div>
                 <div class="form-group mt-2">
                     <strong><label>Sınav Açıklaması:</label></strong>
-                    <textarea name="description" class="form-control " rows=8"> {{$quiz->description}}</textarea>
+                    <textarea name="description" class="form-control "rows=10"> {{$quiz->description}}</textarea>
                 </div>
                 <div class="form-group mt-2">
                     <strong><label>Sınav Durumu:</label></strong>

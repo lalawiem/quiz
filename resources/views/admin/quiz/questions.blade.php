@@ -54,7 +54,7 @@
 
                                                 @csrf
                                                 @method('PUT')
-                                                <div class="form-group mt-2 w-0">
+                                                <div class="form-group mt-2">
                                                     <strong> <label> Soru:</label> </strong>
                                                     <textarea name="question" class="form-control"
                                                         rows=4">{{ $question->question }}</textarea>

@@ -6,7 +6,7 @@
         <div class="card-body">
             <h5 class="card-title float-left mb-3">
                 <a href="{{route('dashboard')}}" class="btn btn-outline-secondary"><i
-                        class="fa fa-arrow-left mr-1"></i><strong> Geri Dön </strong></a>
+                        class="fa fa-arrow-left mr-1"></i><strong> Anasayfaya dön </strong></a>
             </h5>
 
 
@@ -21,7 +21,7 @@
         
             @endif
             @foreach ($duyurular as $duyuru)
-            <div class="modal fade" id="olustur" tabindex="-1" role="dialog"
+            <div class="modal fade mt-5" id="olustur" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -43,8 +43,7 @@
 
                                 <div class="form-group mt-2">
                                     <strong><label> Duyuru:</label></strong>
-                                    <textarea name="description" class="form-control"
-                                        rows=6">{{ old('description') }}</textarea>
+                                    <textarea name="description" class="form-control" rows=8">{{ old('description') }}</textarea>
                                 </div>
                               
                         </div>
@@ -60,7 +59,7 @@
 
             <!-- Tablo -->
             <table class="table table-bordered">
-                <thead>
+                <thead class="mb-4">
                     <tr>
                         <th scope="col">Duyuru Adı</th>
                         <th style="text-align: center"> Detay </th>
@@ -72,7 +71,7 @@
                 <tbody>
                     @foreach ($duyurular as $duyuru)
                     <tr>
-                        <td><strong class="text-success"> [Okundu] </strong>{{$duyuru->title}}</td>
+                        <td>{{$duyuru->title}}</td>
                         <td style="text-align: center">
                             <button type="button" class="btn btn-success mb-1" data-toggle="modal"
                                 data-target="#duyuru{{ $loop->index }}">
@@ -87,7 +86,7 @@
                                         class="fa-solid fa-circle-xmark mr-1"></i>Duyuruyu Sil</button>
                             </form>
                             @endif
-                            <div class="modal fade" id="duyuru{{ $loop->index }}" tabindex="-1" role="dialog"
+                            <div class="modal fade mt-5" id="duyuru{{ $loop->index }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -124,7 +123,7 @@
                         </td>
                         @endif
 
-                        <div class="modal fade" id="düzenle{{ $loop->index}}" tabindex="-1" role="dialog"
+                        <div class="modal fade mt-5" id="düzenle{{ $loop->index}}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -142,13 +141,13 @@
                                             @method('PUT')
                                             <div class="form-group">
                                                 <strong><label>Duyuru Başlığı:</label></strong>
-                                                <input type="text" name="title" class="form-control mt-1"
+                                                <input type="text" name="title" class="form-control  mt-1"
                                                     value="{{$duyuru->title}}">
                                             </div>
                                             <div class="form-group mt-2">
                                                 <strong><label>Duyuru Açıklaması:</label></strong>
                                                 <textarea name="description" class="form-control mt-1"
-                                                    rows=8"> "{{$duyuru->description}}</textarea>
+                                                    rows=11"> "{{$duyuru->description}}</textarea>
                                             </div>
                                     </div>
                                     <div class="modal-footer">

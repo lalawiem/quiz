@@ -3,11 +3,11 @@
     <x-slot name="header">
         <h4>{{$quiz->title}}</h4><small> {{$quiz->description}}</small>
     </x-slot>
-    <div class="card container mt-3">
+    <div class="card container mt-2">
         <div class="card-body">
-            <h5 class="card-title mb-3">
-                <a href="{{route('quizzes.index')}}" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-left"></i>
-                    Sınavlara Dön</a>
+            <h5 class="card-title mb-2">
+            <a href="{{route('quizzes.index')}}" class="btn btn-outline-secondary mb-1"><i
+                        class="fa fa-arrow-left mr-2"></i><strong>Sınavlara dön</strong></a>
             </h5>
 
             <div class="row">
@@ -37,7 +37,7 @@
                         @endif
 
                         @if(count($quiz->topTen)> 0)
-                        <div class="card mt-3 mb-2">
+                        <div class="card mt-3 mb-3">
                             <div class="card-body">
                                 <h5 class="card-title">İlk 10</h5>
                                 <ul class="list-group">

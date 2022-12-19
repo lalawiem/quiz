@@ -1,6 +1,5 @@
 <x-app-layout>
-    <x-slot name="header"> <h4>Anasayfa - Sonuçlar</h4>   <form class="d-flex">
-     </x-slot> 
+    <x-slot name="header"> <h4>Sonuç Ekranı</h4></x-slot> 
     <div class="card container mt-3">
         <div class="card-body">
             <p class="card-text">
@@ -41,7 +40,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-9 mb-3">
                     <div class="list-group">
                         @foreach($quizzes as $quiz)
                         <a href="{{route('quiz_detail',$quiz->slug)}}"
