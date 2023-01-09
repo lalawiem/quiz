@@ -96,7 +96,7 @@ class DuyuruController extends Controller
         $duyuru = Duyuru::find($id) ?? abort(404,'Duyuru Bulunamadı') ; 
         duyuru::find($id)->update($request->except(['_method','_token']));
 
-        return redirect()->route('duyurular.index')->withsuccess('Duyuru güncelleme işlemi başarıyla Ggrçekleştirildi. ');
+        return redirect()->route('duyurular.index')->withsuccess('Duyuru başarıyla güncellendi. ');
 
    
        
@@ -113,7 +113,7 @@ class DuyuruController extends Controller
     {
         Duyuru::find($id)->delete();
 
-        return redirect()->route('duyurular.index')->withSuccess('Duyuru silme işlemi başarıyla gerçekleştirildi.');
+        return redirect()->route('duyurular.index')->withSuccess('Duyuru başarıyla silindi.');
         
     }
 

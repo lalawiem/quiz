@@ -117,6 +117,19 @@ class QuizController extends Controller
         return redirect()->route('quizzes.index')->withSuccess('Sınav başarıyla silindi.');
     }
 
+    public function quizAc(Request $request){
+        Quiz::find($request->id)->update([
+            'status'=>'publish'
+        ]);
+        return redirect()->route('quizzes.index')->withSuccess('Quiz Durumu Aktif Olarak Değiştirildi.');
+    }
+    public function quizKapa(Request $request){
+        Quiz::find($request->id)->update([
+            'status'=>'passive'
+        ]);
+        return redirect()->route('quizzes.index')->withSuccess('Quiz Durumu Pasif Olarak Değiştirildi.');
+    }
+
     
 
 

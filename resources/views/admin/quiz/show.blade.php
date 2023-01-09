@@ -3,7 +3,7 @@
     <x-slot name="header">
         <h4>{{$quiz->title}}</h4><small> {{$quiz->description}}</small>
     </x-slot>
-    <div class="card container mt-2">
+    <div class="card container mt-3">
         <div class="card-body">
             <h5 class="card-title mb-2">
             <a href="{{route('quizzes.index')}}" class="btn btn-outline-secondary mb-1"><i

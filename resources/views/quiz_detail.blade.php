@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h4>{{$quiz->title}}</h4>
     </x-slot>
-    <div class="card container mt-2">
+    <div class="card container mt-3">
         <div class="row">
             <div class="card-body">
                 <div class="row">
@@ -73,7 +73,7 @@
                                 <ul class="list-group">
                                     @foreach($quiz->topTen as $result)
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <strong class="h5 mt-2">{{$loop->iteration}}.</strong>
+                                        <strong class="h5 mt-2">{{$loop->iteration}}.</strong> 
                                         <img class="w-8 h8 rounded-full" src="{{$result->user->profile_photo_url}}">
                                         <span @if(auth()->user()->id==$result->user_id) class="text-primary" @endif>
                                             <strong>{{$result->user->name}}</strong> </span>

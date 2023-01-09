@@ -12,7 +12,7 @@
                 <div class="mt-3">
                     <span class="inline-flex rounded-md">
                         <span class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
-                            <strong> {{ Auth::user()->name }} </strong>
+                        <strong> {{ Auth::user()->name }} </strong>
                         </span>
                     </span>
                     </div>
@@ -48,6 +48,7 @@
                             <div class="d-flex w-100 justify-content-between">
                                 <h4 class="mb-0">{{$quiz->title}}</h4>
                                 <small>{{$quiz->finished_at ? $quiz->finished_at->diffForHumans().' bitiyor.' : null}}</small>
+                            
                             </div>
 
                             <p class="mb-1">{{Str::limit($quiz->description,50)}}</p>

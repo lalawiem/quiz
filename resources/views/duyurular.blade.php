@@ -49,7 +49,7 @@
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>                            
-                        <button type="submit" class="btn btn-success">Duyuruyu Ekle<i class="fa-solid fa-circle-check ml-1"></i></button>
+                        <button type="submit" class="btn btn-success">Duyuruyu Ekle<i class="fa-solid fa-circle-check ml-1 mt-1"></i></button>
                         </div>
                         </form>
                     </div>

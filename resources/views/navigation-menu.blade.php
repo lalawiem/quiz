@@ -6,16 +6,14 @@
                 <!-- Logo -->
                 <div class=" flex items-center ml-5 mr-3">
                     <a href="{{route('dashboard')}}">
-                        <img src="/uploads/">
-
+                        <img class=" " src="/uploads/">
                     </a>
                 </div>
-
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        <i class="fa-solid fa-house mr-2"></i> {{('Anasayfa')}}
+                        <i class="fa-solid fa-house mr-2"></i> {{('Sonuçlar')}}
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('duyurular.index') }}" :active="request()->routeIs('duyurular')">
@@ -34,7 +32,6 @@
                                 <button type="button"
                                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
                                     {{ Auth::user()->currentTeam->name }}
-
                                     <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -117,8 +114,6 @@
 
                         <x-slot name="content">
                             @if (Auth()->user()->type=='admin')
-
-
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 <div class="row">
                                     <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
@@ -164,10 +159,10 @@
             <!-- Hamburger -->
             <div class=" flex items-center sm:hidden m-auto mr-5">
                 <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="text-left">
-                    {{ __('Ana Sayfa') }}
+                    {{ __('Sonuçlar') }}
                 </x-jet-nav-link>
 
-                <x-jet-nav-link class="ml-5" href="{{ route('duyurular.index') }}" :active="request()->routeIs('dashboard')">
+                <x-jet-nav-link class="ml-5" href="{{ route('duyurular.index') }}" :active="request()->routeIs('duyuru')">
                     {{ __('Duyurular') }}
                 </x-jet-nav-link>
             </div>
@@ -189,11 +184,8 @@
             </div>
         </div>
 
-
-
         <!-- Responsive Navigation Menu -->
         <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-
 
             <!-- Responsive Settings Options -->
             <div class="pt-3 pb-1 border-t border-gray-200">
@@ -204,7 +196,6 @@
                             <img class="h-20 w-20 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
                                 alt="{{ Auth::user()->name }}" /> </a>
                     </div>
-
                     @endif
 
                     <div>
@@ -215,12 +206,8 @@
 
                 <div class="mt-3 space-y-1">
                     <!-- Account Management -->
-
                     <x-slot name="content">
-
                         @if (Auth()->user()->type=='admin')
-
-
                         <div class="block px-4 py-2 text-xs text-gray-400">
                             {{ __('Admin İşlemleri') }}
                         </div>
@@ -237,16 +224,12 @@
                             {{ __('Duyurular') }}
                         </x-jet-dropdown-link>
                         @endif
-
                         <div class="block px-4 py-2 text-xs text-gray-400">
-
                         </div>
-
-
+                        </form>
 
                         <!-- Authentication -->
 
-                        </form>
 
                         <!-- Team Management -->
                         @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())

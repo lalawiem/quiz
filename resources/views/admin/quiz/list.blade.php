@@ -3,7 +3,7 @@
     <x-slot name="header">
         <h4> Sınavlar</h4>
     </x-slot>
-    <div class="card container mt-2">
+    <div class="card container mt-3">
         <div class="card-body">
             <h5 class=" float-right mt-1 ">
                 <button type="button" class="btn btn-outline-primary mb-1" data-toggle="modal" data-target="#quiz">
@@ -144,7 +144,6 @@
                                         @endswitch
                                     </td>
 
-
                                     <td style="text-align: center">
                                         <div class="dropdown">
                                             <a class="btn btn-primary dropdown-toggle mb-1" href="#" role="button"
@@ -166,7 +165,6 @@
                                                 <a class="dropdown-item"
                                                     href="{{route('quizzes.edit', $quiz->id)}}">Düzenle
                                                 </a>
-
                                             </div>
                                         </div>
                                     </td>
